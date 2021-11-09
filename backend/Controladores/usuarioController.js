@@ -1,4 +1,5 @@
 const Usuario = require("../models/").Usuario
+const bcrypt = require("bcrypt")
 var ServicioCrearUsuario = require("../Servicios/servicioCrearUsuario")
 var ServicioDeshabilitarUsuario = require("../Servicios/servicioDeshabilitarUsuario")
 var ServicioHabilitarUsuario = require("../Servicios/servicioHabilitarUsuario")
@@ -13,14 +14,16 @@ exports.crearUsuario = async (req, res) => {
 	if(req.body.email != "" && req.body.email != null &&
 			req.body.nombres != "" && req.body.nombres != null &&
 			req.body.apellidos != "" && req.body.apellidos != null &&
-			req.body.clave != "" && req.body.clave != null)
+			req.body.clave != "" && req.body.clave != null &&
+			req.body.rol >= 1 && req.body.rol <= 4)
 	{
 		const usuarioData = {
 			email: req.body.email,
 			nombres: req.body.nombres,
 			apellidos: req.body.apellidos,
-			clave: req.body.clave,
-			estado: 1
+			clave: await bcrypt.hash(req.body.clave,10),
+			estado: 1,
+			rol: req.body.rol
 		}
 
 		res.json({
@@ -115,7 +118,7 @@ exports.listarUsuarios = async (req, res) => {
  * 
  */
 exports.login = async (req, res) => {
-	if (req.body.email == "" && req.body.password == ""){
+	if (req.body.email == "" || req.body.password == ""){
 		res.json({
 			success: false,
 			trace: "",

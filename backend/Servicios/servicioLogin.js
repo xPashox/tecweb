@@ -1,5 +1,8 @@
 const Usuario = require("../models").Usuario
 const UsuarioRol = require ("../models").UsuarioRol
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
+const _config = require("..")
 
 let fetcheduser
 
@@ -16,13 +19,13 @@ var iniciarSesion = async function (usuarioData){
             }
         }
         fetcheduser = user
-        return bcryp.compare(usuarioData.clave, user.clave)
+        return bcrypt.compare(usuarioData.clave, user.clave)
     }).then(result => {
         if (!result){
-            return {
+            return Promise.reject({
                 success: false,
                 trace: "Clave incorrecta."
-            }
+            })
         }
         return UsuarioRol.findOne({
             where: {
@@ -43,7 +46,7 @@ var iniciarSesion = async function (usuarioData){
                 email: fetcheduser.email,
                 rol: result.idRol
             },
-            process.env.JWT_SECRET_KEY, //INSTALAR DOTENV
+            _config.JWTSecret,
             {
                 expiresIn: "1d"
             }
@@ -55,7 +58,9 @@ var iniciarSesion = async function (usuarioData){
     }).catch(err => {
         return {
             success: false,
-            trace: err
+            trace: err.trace
         }
     })
 }
+
+module.exports.iniciarSesion = iniciarSesion;
