@@ -1,10 +1,12 @@
 const Usuario = require("../models/").Usuario
+const bcrypt = require("bcrypt")
 var ServicioCrearUsuario = require("../Servicios/servicioCrearUsuario")
 var ServicioDeshabilitarUsuario = require("../Servicios/servicioDeshabilitarUsuario")
 var ServicioHabilitarUsuario = require("../Servicios/servicioHabilitarUsuario")
 var ServicioEditarUsuario = require("../Servicios/servicioEditarUsuario")
 var ServicioListarUsuario = require("../Servicios/servicioListarUsuario")
 var ServicioListarUsuarios = require("../Servicios/servicioListarUsuarios")
+var ServicioLogin = require("../Servicios/servicioLogin")
 
 //Falta añadir verificación de tipo de usuario
 
@@ -12,14 +14,16 @@ exports.crearUsuario = async (req, res) => {
 	if(req.body.email != "" && req.body.email != null &&
 			req.body.nombres != "" && req.body.nombres != null &&
 			req.body.apellidos != "" && req.body.apellidos != null &&
-			req.body.clave != "" && req.body.clave != null)
+			req.body.clave != "" && req.body.clave != null &&
+			req.body.rol >= 1 && req.body.rol <= 4)
 	{
 		const usuarioData = {
 			email: req.body.email,
 			nombres: req.body.nombres,
 			apellidos: req.body.apellidos,
-			clave: req.body.clave,
-			estado: 1
+			clave: await bcrypt.hash(req.body.clave,10),
+			estado: 1,
+			rol: req.body.rol
 		}
 
 		res.json({
@@ -108,4 +112,37 @@ exports.listarUsuarios = async (req, res) => {
 		listaUsuarios: await ServicioListarUsuarios.listarUsuarios()
 	})
 
+}
+
+/**
+ * 
+ */
+exports.login = async (req, res) => {
+	if (req.body.email == "" || req.body.password == ""){
+		res.json({
+			success: false,
+			trace: "",
+			errors:[
+				"Usuario no válido."
+			]
+		})
+	}
+	/* Llamada Servicio Login */
+	const usuarioData = {
+		email: req.body.email,
+		clave: req.body.clave
+	}
+	var loginresult = await ServicioLogin.iniciarSesion(usuarioData)
+	if (loginresult.success){
+		res.status(200).json({
+			success: true,
+			trace: loginresult.trace
+		})
+	}
+	else{
+		res.status(400).json({
+			success : false,
+			trace: loginresult.trace
+		})
+	}
 }
