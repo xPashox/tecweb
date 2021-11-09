@@ -5,6 +5,7 @@ var ServicioHabilitarUsuario = require("../Servicios/servicioHabilitarUsuario")
 var ServicioEditarUsuario = require("../Servicios/servicioEditarUsuario")
 var ServicioListarUsuario = require("../Servicios/servicioListarUsuario")
 var ServicioListarUsuarios = require("../Servicios/servicioListarUsuarios")
+var ServicioLogin = require("../Servicios/servicioLogin")
 
 //Falta añadir verificación de tipo de usuario
 
@@ -108,4 +109,37 @@ exports.listarUsuarios = async (req, res) => {
 		listaUsuarios: await ServicioListarUsuarios.listarUsuarios()
 	})
 
+}
+
+/**
+ * 
+ */
+exports.login = async (req, res) => {
+	if (req.body.email == "" && req.body.password == ""){
+		res.json({
+			success: false,
+			trace: "",
+			errors:[
+				"Usuario no válido."
+			]
+		})
+	}
+	/* Llamada Servicio Login */
+	const usuarioData = {
+		email: req.body.email,
+		clave: req.body.clave
+	}
+	var loginresult = await ServicioLogin.iniciarSesion(usuarioData)
+	if (loginresult.success){
+		res.status(200).json({
+			success: true,
+			trace: loginresult.trace
+		})
+	}
+	else{
+		res.status(400).json({
+			success : false,
+			trace: loginresult.trace
+		})
+	}
 }
