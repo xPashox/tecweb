@@ -7,14 +7,14 @@
                     <form [formGroup]="inicioSesionForm" (ngSubmit)="onSubmit(inicioSesionForm.value)">
                         <div class="form-group">
                             <label>Correo</label>
-                            <input type="text" formControlName="correo" class="form-control"/>
+                            <input type="text" formControlName="email" class="form-control"/>
                             <div class="invalid-feedback">
                                 <div>El correo electrónico es obligatorio</div>
                             </div>
                         </div>
                         <div class="form-group mt-3">
                             <label>Contraseña</label>
-                            <input type="password" formControlName="contrasenia" class="form-control"/>
+                            <input type="password" formControlName="clave" class="form-control"/>
                             <div class="invalid-feedback">
                                 <div>La contraseña es obligatoria</div>
                             </div>

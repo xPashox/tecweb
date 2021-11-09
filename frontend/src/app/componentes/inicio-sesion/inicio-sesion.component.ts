@@ -12,8 +12,8 @@ import { ApiService } from '../../servicios/api.service';
 export class InicioSesionComponent implements OnInit {
 
   inicioSesionForm = new FormGroup({
-    correo: new FormControl('', Validators.required),
-    contrasenia: new FormControl('', Validators.required)
+    email: new FormControl('', Validators.required),
+    clave: new FormControl('', Validators.required)
   })
 
   constructor(private api:ApiService) { }

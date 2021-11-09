@@ -1,4 +1,4 @@
 export interface UsuarioI{
-    correo: string,
-    contrasenia: string
+    email: string,
+    clave: string
 }

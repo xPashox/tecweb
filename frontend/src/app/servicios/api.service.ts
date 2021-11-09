@@ -16,7 +16,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   iniciarSesion(usuario: UsuarioI) : Observable<RespuestaApiI> {
-    let ruta = this.urlApi + "autenticar";
+    let ruta = this.urlApi + "usuario/login";
     return this.http.post<RespuestaApiI>(ruta, usuario);
   }
 }
