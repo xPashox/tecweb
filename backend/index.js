@@ -1,5 +1,9 @@
+/* Variables Ambiente */
+require('dotenv').config()
+module.exports = {
+	JWTSecret: process.env.JWT_SECRET
+}
 //Archivo servidor
-
 const express = require('express');
 const cors = require('cors')
 const bodyParser = require("body-parser")
