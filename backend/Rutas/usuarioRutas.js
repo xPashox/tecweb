@@ -9,5 +9,6 @@ const cors = require("cors")
 usuario.use(cors())
 
 usuario.post("/crear", rutasProtegidas, usuarioController.crearUsuario)
+usuario.post("/login", usuarioController.login)
 
 module.exports = usuario
