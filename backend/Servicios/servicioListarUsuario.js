@@ -9,18 +9,35 @@ var listarUsuario = async function (email){
 		})
 		.then(user => {
 			if(user != null){
-				return {
+				var userData = {
 					id: user.id,
 					email: user.email,
 					nombres: user.nombres,
 					apellidos: user.apellidos,
-					clave: user.clave,
 					estado: user.estado
+				}
+				return {
+					success: true,
+					trace: userData,
+					errors: []
+				}
+			}
+			else{
+				return {
+					success: false,
+					trace: "",
+					errors: [
+						"El usuario no existe"
+					]
 				}
 			}
 		})
 		.catch(err => {
-			return 0 // ERROR GENERICO -> catch Exception ex
+			return {
+				success: false,
+				trace: "",
+				errors: ["Error en la base de datos"]
+			}
 		})
 }
 
