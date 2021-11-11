@@ -11,8 +11,8 @@ var crearUsuario = async function (usuarioData){
 		.then(user => {
 			if(user == null){
 				return Usuario.create(usuarioData)
-				.then(user => {
-					if (!user){
+				.then(user1 => {
+					if (!user1){
 						return {
 							success: false,
 							trace: "",
@@ -23,20 +23,21 @@ var crearUsuario = async function (usuarioData){
 					}
 					else{
 						const userRolData = {
-							idUsuario: user.id,
+							idUsuario: user1.id,
 							idRol: usuarioData.rol,
 							estado: 1
 						}
-						UsuarioRol.create(userRolData).then(result => {
+						return UsuarioRol.create(userRolData).then(result => {
+							//console.log(result)
 							return {
 								success: true,
-								trace: user.email,
+								trace: "Usuario " + usuarioData.email + " y rol creado con exito",
 								errors:[]
 							}
 						}).catch(err => {
 							return {
 								success: true,
-								trace: user.email,
+								trace: "Usuario " + usuarioData.email + " ha sido creado",
 								errors:[
 								 	"El rol del usuario no ha sido creado."
 								]
