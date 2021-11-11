@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuarioI } from 'src/app/modelos/usuario.interface';
 import { ApiService } from '../../servicios/api.service';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -23,7 +24,8 @@ export class InicioSesionComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(usuario: UsuarioI){
-    console.log(usuario);
+    const md5 = new Md5();
+    usuario.clave = (md5.appendStr(usuario.clave).end()).toString();
     this.api.iniciarSesion(usuario).subscribe(data =>{
       console.log(data);
     });
