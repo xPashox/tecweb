@@ -11,15 +11,16 @@ import { ApiService } from '../../servicios/api.service';
 })
 export class InicioSesionComponent implements OnInit {
 
-  inicioSesionForm = new FormGroup({
-    email: new FormControl('', Validators.required),
-    clave: new FormControl('', Validators.required)
-  })
+  inicioSesionForm: FormGroup;
 
-  constructor(private api:ApiService) { }
-
-  ngOnInit(): void {
+  constructor(private api:ApiService) { 
+    this.inicioSesionForm = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      clave: new FormControl(null, [Validators.required, Validators.minLength(6)])
+    })
   }
+
+  ngOnInit(): void {}
 
   onSubmit(usuario: UsuarioI){
     console.log(usuario);
@@ -27,5 +28,8 @@ export class InicioSesionComponent implements OnInit {
       console.log(data);
     });
   }
+
+  get email () { return this.inicioSesionForm.get('email'); }
+  get clave () { return this.inicioSesionForm.get('clave'); }
 
 }

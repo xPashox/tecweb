@@ -7,17 +7,23 @@
                     <form [formGroup]="inicioSesionForm" (ngSubmit)="onSubmit(inicioSesionForm.value)">
                         <div class="form-group">
                             <label>Correo</label>
-                            <input type="text" formControlName="email" class="form-control"/>
-                            <div class="invalid-feedback">
-                                <div>El correo electrónico es obligatorio</div>
+                            <input type="email" formControlName="email" class="form-control" 
+                                [ngClass]="{ 'is-invalid': email?.invalid && email?.touched, 
+                                'is-valid': email?.valid && email?.touched }" required/>
+                            <div class="invalid-feedback" *ngIf="email?.invalid && email?.touched">
+                                <p *ngIf="email?.hasError('required')">El correo electrónico es obligatorio</p>
+                                <p *ngIf="email?.hasError('email')">El correo electrónico debe ser válido. Por ejemplo: correo@ejemplo.com</p>
                             </div>
                         </div>
                         <div class="form-group mt-3">
                             <label>Contraseña</label>
-                            <input type="password" formControlName="clave" class="form-control"/>
-                            <div class="invalid-feedback">
-                                <div>La contraseña es obligatoria</div>
-                            </div>
+                            <input type="password" formControlName="clave" class="form-control" 
+                                [ngClass]="{ 'is-invalid': clave?.invalid && clave?.touched, 
+                                'is-valid': clave?.valid && clave?.touched }" required/>
+                                <div class="invalid-feedback" *ngIf="clave?.invalid && clave?.touched">
+                                    <p *ngIf="clave?.hasError('required')">La contraseña es obligatoria</p>
+                                    <p *ngIf="clave?.hasError('minlength')">La contraseña debe tener un mínimo de 6 caracteres</p>
+                                </div>
                         </div>
                         <div class="form-group mt-3">
                             <button class="btn btn-primary" [disabled]="inicioSesionForm.invalid">Ingresar</button>
