@@ -1,4 +1,4 @@
 export interface RespuestaApiI{
-    estado: string,
-    respuesta: string
+    success: boolean,
+    trace: string
 }
