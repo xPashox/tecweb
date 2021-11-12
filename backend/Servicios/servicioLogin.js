@@ -13,10 +13,10 @@ var iniciarSesion = async function (usuarioData){
         }
     }).then(user => {
         if (!user){
-            return {
+            return Promise.reject({
                 success: false,
                 trace: "No se encontro al usuario."
-            }
+            })
         }
         fetcheduser = user
         return bcrypt.compare(usuarioData.clave, user.clave)
@@ -34,10 +34,10 @@ var iniciarSesion = async function (usuarioData){
         })
     }).then(result => {
         if (!result){
-            return {
+            return Promise.reject({
                 success: false,
                 trace: "Usuario no autorizado."
-            }
+            })
         }
         /* Crear Token */
         const token = jwt.sign(
