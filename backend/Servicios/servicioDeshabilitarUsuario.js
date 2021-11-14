@@ -24,31 +24,31 @@ var deshabilitarUsuario = async function (email){
 						}
 					})
 					.catch(err => {
-						return {
+						return Promise.reject({
 							success: false,
 							trace: "",
 							errors: [
 								"No se ha podido deshabilitar el usuario."
 							]
-						}
+						})
 				})
 			}else{
-				return {
+				return Promise.reject({
 					success: false,
 					trace: "",
 					errors: [
 						"El usuario no existe."
 					]
-				}
+				})
 			}
 		})
 		.catch(err => {
 			//console.log(err)
-			return {
+			return Promise.reject({
 				success: false,
 				trace: "",
 				errors: ["Error en la base de datos"]
-			}
+			})
 		})
 }
 

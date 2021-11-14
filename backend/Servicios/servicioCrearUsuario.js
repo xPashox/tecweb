@@ -13,13 +13,13 @@ var crearUsuario = async function (usuarioData){
 				return Usuario.create(usuarioData)
 				.then(user1 => {
 					if (!user1){
-						return {
+						return Promise.reject({
 							success: false,
 							trace: "",
 							errors:[
 								"Ha ocurrido un error al momento de crear el usuario"
 							]
-						}
+						})
 					}
 					else{
 						const userRolData = {
@@ -45,30 +45,30 @@ var crearUsuario = async function (usuarioData){
 						})
 					}
 				}).catch(err => {
-					return {
+					return Promise.reject({
 						success: false,
 						trace: "",
 						errors:[
 							"No se ha podido crear el usuario."
 						]
-					}
+					})
 				})
 			}else{
-				return {
+				return Promise.reject({
 					success: false,
 					trace: "",
 					errors:[
 						"El usuario ya existe"
 					]
-				}
+				})
 			}
 		})
 		.catch(err => {
-			return {
+			return Promise.reject({
 				success: false,
 				trace: "",
 				errors: ["Error en la base de datos"]
-			}
+			})
 		})
 }
 
