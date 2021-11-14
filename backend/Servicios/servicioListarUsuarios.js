@@ -17,10 +17,18 @@ var listarUsuarios = async function (){
 				}
 				listaUsuarios.push(usuario)
 			}
-			return listaUsuarios
+			return {
+				success: true,
+				trace: listaUsuarios,
+				errors: []
+			}
 		})
 		.catch(err => {
-			return 0 // ERROR GENERICO -> catch Exception ex
+			return {
+				success: false,
+				trace: "",
+				errors: ["Error en base de datos"]
+			}
 		})
 }
 

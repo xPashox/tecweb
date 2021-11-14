@@ -17,18 +17,38 @@ var habilitarUsuario = async function (email){
 				}
 				})
 				.then(user => {
-						return 1// DONE - finalizado exitosamente
+						return {
+							success: true,
+							trace: user,
+							errors:[]
+						}
 					})
 					.catch(err => {
-						return 2// ERROR - No se puede crear usuario
+						return {
+							success: false,
+							trace: "",
+							errors: [
+								"No se ha podido habilitar el usuario."
+							]
+						}
 				})
 			}else{
-				return 3// ERROR - No se puede crear usuario // El usuario ya existe
+				return {
+					success: false,
+					trace: "",
+					errors: [
+						"El usuario no existe."
+					]
+				}
 			}
 		})
 		.catch(err => {
 			//console.log(err)
-			return 0 // ERROR GENERICO -> catch Exception ex
+			return {
+				success: false,
+				trace: "",
+				errors: ["Error en la base de datos"]
+			}
 		})
 }
 

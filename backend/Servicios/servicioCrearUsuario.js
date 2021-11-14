@@ -11,31 +11,64 @@ var crearUsuario = async function (usuarioData){
 		.then(user => {
 			if(user == null){
 				return Usuario.create(usuarioData)
-				.then(user => {
-					if (!user){
-						return 2
+				.then(user1 => {
+					if (!user1){
+						return {
+							success: false,
+							trace: "",
+							errors:[
+								"Ha ocurrido un error al momento de crear el usuario"
+							]
+						}
 					}
 					else{
 						const userRolData = {
-							idUsuario: user.id,
+							idUsuario: user1.id,
 							idRol: usuarioData.rol,
 							estado: 1
 						}
-						UsuarioRol.create(userRolData).then(result => {
-							return 1 // Se pudo crear Usuario y UsuarioRol
+						return UsuarioRol.create(userRolData).then(result => {
+							//console.log(result)
+							return {
+								success: true,
+								trace: "Usuario " + usuarioData.email + " y rol creado con exito",
+								errors:[]
+							}
 						}).catch(err => {
-							return 4 // ERROR - No se puede crear UsuarioRol
+							return {
+								success: true,
+								trace: "Usuario " + usuarioData.email + " ha sido creado",
+								errors:[
+								 	"El rol del usuario no ha sido creado."
+								]
+							}
 						})
 					}
 				}).catch(err => {
-					return 2// ERROR - No se puede crear usuario
+					return {
+						success: false,
+						trace: "",
+						errors:[
+							"No se ha podido crear el usuario."
+						]
+					}
 				})
 			}else{
-				return 3// ERROR - No se puede crear usuario // El usuario ya existe
+				return {
+					success: false,
+					trace: "",
+					errors:[
+						"El usuario ya existe"
+					]
+				}
 			}
 		})
 		.catch(err => {
-			return 0 // ERROR GENERICO -> catch Exception ex
+			return {
+				success: false,
+				trace: "",
+				errors: ["Error en la base de datos"]
+			}
 		})
 }
 

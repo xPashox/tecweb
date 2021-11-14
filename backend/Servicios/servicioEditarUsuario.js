@@ -20,17 +20,37 @@ var editarUsuario = async function (usuarioData){
 					}
 				})
 				.then(user => {
-						return 1// DONE - finalizado exitosamente
+						return {
+							success: true,
+							trace: "El usuario " + usuarioData.email + " ha sido editado con exito.",
+							errors: []
+						}
 					})
 					.catch(err => {
-						return 2// ERROR - No se puede crear usuario
+						return {
+							success: false,
+							trace: "",
+							errors: [
+								"El usuario no ha podido ser modificado."
+							]
+						}
 				})
 			}else{
-				return 3// ERROR - No se puede crear usuario // El usuario ya existe
+				return {
+					success: false,
+					trace: "",
+					errors: [
+						"El usuario no existe"
+					]
+				}
 			}
 		})
 		.catch(err => {
-			return 0 // ERROR GENERICO -> catch Exception ex
+			return {
+				success: false,
+				trace: "",
+				errors: ["Error en la base de datos"]
+			}
 		})
 }
 
