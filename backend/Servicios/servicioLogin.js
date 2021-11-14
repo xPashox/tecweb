@@ -18,6 +18,12 @@ var iniciarSesion = async function (usuarioData){
                 trace: "No se encontro al usuario."
             })
         }
+        if(user.estado == 0){
+            return Promise.reject({
+                success: false,
+                trace: "El usuario se encuentra deshabilitado."
+            })
+        }
         fetcheduser = user
         return bcrypt.compare(usuarioData.clave, user.clave)
     }).then(result => {

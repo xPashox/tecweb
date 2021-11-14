@@ -6,8 +6,8 @@ const _config = require("..")
 rutasProtegidas.use((req, res, next) => {
 
     const bearerLine = req.headers['authorization'];
-
-    if (bearerLine === 'undefined') {
+    console.log(bearerLine)
+    if (typeof bearerLine === 'undefined') {
       return res.status(403).json({
           mensaje: 'Token no proveída.'
       });
