@@ -275,8 +275,8 @@
                     "field": "email",
                     "seqType": "Sequelize.TEXT"
                 },
-                "nombre": {
-                    "field": "nombre",
+                "nombres": {
+                    "field": "nombres",
                     "seqType": "Sequelize.TEXT"
                 },
                 "apellidos": {
@@ -560,5 +560,5 @@
     "path": "/home/xpashox/WorkBench/TecWeb/proyecto/backend/migrations/_current.json",
     "backupPath": "/home/xpashox/WorkBench/TecWeb/proyecto/backend/migrations/_current_bak.json",
     "exists": true,
-    "revision": 2
+    "revision": 3
 }
