@@ -20,10 +20,10 @@ sala.put("/crear", rutasProtegidas,
 	salaController.crearSala)
 
 //Rutas tipo GET
-sala.get("/obtenersala", rutasProtegidas,
+sala.get("/obtener", rutasProtegidas,
 	salaController.obtenerSala)
 
-sala.get("/listarsalas", rutasProtegidas, salaController.listarSalas)
+sala.get("/listar", rutasProtegidas, salaController.listarSalas)
 
 //Rutas tipo PATCH
 sala.patch("/deshabilitar", rutasProtegidas, salaController.deshabilitarSala)

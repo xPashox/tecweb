@@ -1,6 +1,6 @@
 const Sala = require("../models").Sala
-var _serviceCrearSala = require("../Servicios/Sala").crearSala
-var _serviceEditarSala = require("../Servicios/Sala").editarSala
+var _serviceCrearSala = require("../Servicios/Sala/servicioCrearSala")
+var _serviceEditarSala = require("../Servicios/Sala/servicioEditarSala")
 var _serviceEliminarSala = require("../Servicios/Sala/servicioEliminarSala")
 var _serviceListarSala = require("../Servicios/Sala/servicioListarSala")
 
@@ -25,8 +25,8 @@ exports.crearSala = async (req, res) => {
 }
 
 exports.editarSala = async (req, res) => {
-    if (req.body.id = null || req.body.idCasaEstudio == null || 
-        req.body.nombre == "" || req.body.aforo == null){
+    if (req.body.id == null || (req.body.idCasaEstudio == null && 
+        req.body.nombre == "" && req.body.aforo == null)){
         res.json({
             success: false,
             trace: "",
@@ -45,7 +45,7 @@ exports.editarSala = async (req, res) => {
 }
 
 exports.deshabilitarSala = async (req, res) => {
-    if (req.body.id = null || req.body.idCasaEstudio == null){
+    if (req.body.id == null || req.body.idCasaEstudio == null){
         res.json({
             success: false,
             trace: "",
@@ -59,11 +59,11 @@ exports.deshabilitarSala = async (req, res) => {
         estado: 0
     }
 
-    res.json(await _serviceEliminarSala.deshabilitarSala(salaData))
+    res.json(await _serviceEliminarSala.cambiarEstadoSala(salaData))
 }
 
 exports.habilitarSala = async (req, res) => {
-    if (req.body.id = null || req.body.idCasaEstudio == null){
+    if (req.body.id == null || req.body.idCasaEstudio == null){
         res.json({
             success: false,
             trace: "",
@@ -77,11 +77,11 @@ exports.habilitarSala = async (req, res) => {
         estado: 1
     }
 
-    res.json(await _serviceEliminarSala.habilitarSala(salaData))
+    res.json(await _serviceEliminarSala.cambiarEstadoSala(salaData))
 }
 
 exports.obtenerSala = async (req, res) => {
-    if (req.body.id = null || req.body.idCasaEstudio == null){
+    if (req.body.id == null || req.body.idCasaEstudio == null){
         res.json({
             success: false,
             trace: "",
@@ -99,7 +99,7 @@ exports.obtenerSala = async (req, res) => {
 }
 
 exports.listarSalas = async (req, res) => {
-    if (req.body.id = null || req.body.idCasaEstudio == null){
+    if (req.body.idCasaEstudio == null){
         res.json({
             success: false,
             trace: "",
@@ -108,9 +108,7 @@ exports.listarSalas = async (req, res) => {
     }
 
     const salaData = {
-        id: req.body.id,
-        idCasaEstudio: req.body.idCasaEstudio,
-        estado: 1
+        idCasaEstudio: req.body.idCasaEstudio
     }
 
     res.json(await _serviceListarSala.listarSalas(salaData))
