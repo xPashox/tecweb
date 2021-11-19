@@ -19,7 +19,8 @@ exports.crearModulo = async (req, res) => {
 	const moduloData = {
 		idCasaEstudio: req.body.idCasaEstudio,
 		idCarrera: req.body.idCarrera,
-		nombre: req.body.nombre
+		nombre: req.body.nombre,
+		estado: 1
 	}
 	var crearModuloResult = await ServicioCrearModulo.crearModulo(moduloData)
 	if (crearModuloResult.success){
