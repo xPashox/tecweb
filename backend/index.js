@@ -25,9 +25,11 @@ app.listen(4000, () => {
 
 var Usuarios = require("./Rutas/usuarioRutas")
 var Modulos = require("./Rutas/moduloRutas")
+var UsuariosRolCarreras = require("./Rutas/usuarioRolCarreraRutas")
 
 app.use("/usuario", Usuarios)
 app.use("/modulo", Modulos)
+app.use("/usuarioRolCarrera", UsuariosRolCarreras)
 
 //Codigo para documentacion Swagger
 var swaggerUi = require('swagger-ui-express'),
