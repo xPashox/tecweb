@@ -24,13 +24,13 @@ var deshabilitarUsuario = async function (email){
 						}
 					})
 					.catch(err => {
-						return Promise.reject({
+						return {
 							success: false,
 							trace: "",
 							errors: [
 								"No se ha podido deshabilitar el usuario."
 							]
-						})
+						}
 				})
 			}else{
 				return Promise.reject({
@@ -44,11 +44,11 @@ var deshabilitarUsuario = async function (email){
 		})
 		.catch(err => {
 			//console.log(err)
-			return Promise.reject({
+			return {
 				success: false,
 				trace: "",
 				errors: ["Error en la base de datos"]
-			})
+			}
 		})
 }
 

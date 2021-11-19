@@ -24,10 +24,12 @@ app.listen(4000, () => {
 })
 
 var Usuarios = require("./Rutas/usuarioRutas")
+var Carreras = require("./Rutas/carreraRutas")
 var Modulos = require("./Rutas/moduloRutas")
 var UsuariosRolCarreras = require("./Rutas/usuarioRolCarreraRutas")
 
 app.use("/usuario", Usuarios)
+app.use("/carrera", Carreras)
 app.use("/modulo", Modulos)
 app.use("/usuarioRolCarrera", UsuariosRolCarreras)
 

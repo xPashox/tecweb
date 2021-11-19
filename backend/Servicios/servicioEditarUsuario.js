@@ -27,13 +27,13 @@ var editarUsuario = async function (usuarioData){
 						}
 					})
 					.catch(err => {
-						return Promise.reject({
+						return {
 							success: false,
 							trace: "",
 							errors: [
 								"El usuario no ha podido ser modificado."
 							]
-						})
+						}
 				})
 			}else{
 				return Promise.reject({
@@ -46,11 +46,11 @@ var editarUsuario = async function (usuarioData){
 			}
 		})
 		.catch(err => {
-			return Promise.reject({
+			return {
 				success: false,
 				trace: "",
 				errors: ["Error en la base de datos"]
-			})
+			}
 		})
 }
 

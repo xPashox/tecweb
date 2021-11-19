@@ -33,11 +33,11 @@ var listarUsuario = async function (email){
 			}
 		})
 		.catch(err => {
-			return Promise.reject({
+			return {
 				success: false,
 				trace: "",
 				errors: ["Error en la base de datos"]
-			})
+			}
 		})
 }
 

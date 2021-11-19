@@ -45,13 +45,13 @@ var crearUsuario = async function (usuarioData){
 						})
 					}
 				}).catch(err => {
-					return Promise.reject({
+					return {
 						success: false,
 						trace: "",
 						errors:[
 							"No se ha podido crear el usuario."
 						]
-					})
+					}
 				})
 			}else{
 				return Promise.reject({
@@ -64,11 +64,11 @@ var crearUsuario = async function (usuarioData){
 			}
 		})
 		.catch(err => {
-			return Promise.reject({
+			return {
 				success: false,
 				trace: "",
 				errors: ["Error en la base de datos"]
-			})
+			}
 		})
 }
 

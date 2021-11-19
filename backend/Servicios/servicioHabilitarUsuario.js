@@ -33,22 +33,22 @@ var habilitarUsuario = async function (email){
 						})
 				})
 			}else{
-				return Promise.reject({
+				return {
 					success: false,
 					trace: "",
 					errors: [
 						"El usuario no existe."
 					]
-				})
+				}
 			}
 		})
 		.catch(err => {
 			//console.log(err)
-			return Promise.reject({
+			return {
 				success: false,
 				trace: "",
 				errors: ["Error en la base de datos"]
-			})
+			}
 		})
 }
 
