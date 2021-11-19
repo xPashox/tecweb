@@ -1,5 +1,5 @@
-const Sala = require("../models").Sala
-const CasaEstudio = require("../models").CasaEstudio
+const Sala = require("../../models").Sala
+const CasaEstudio = require("../../models").CasaEstudio
 
 let fetchSalaData
 
@@ -17,7 +17,7 @@ var obtenerSala = async function (salaData){
                 errors: ["Casa de estudios no existe"]
             }
         }
-        Sala.findOne({
+        return Sala.findOne({
             where: {
                 id: salaData.id,
                 estado: 1
@@ -63,7 +63,7 @@ var listarSalas = async function (salaData){
                 errors: ["Casa de estudios no existe"]
             }
         }
-        Sala.findAll({
+        return Sala.findAll({
             where: {
                 idCasaEstudio: salaData.idCasaEstudio,
                 estado: 1

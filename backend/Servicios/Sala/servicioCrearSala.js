@@ -1,5 +1,5 @@
-const Sala = require("../models").Sala
-const CasaEstudio = require("../models").CasaEstudio
+const Sala = require("../../models").Sala
+const CasaEstudio = require("../../models").CasaEstudio
 
 let fetchSalaData
 
@@ -17,7 +17,7 @@ var crearSala = async function (salaData){
                 errors: ["Casa de estudios no existe"]
             }
         }
-        Sala.findOne({
+        return Sala.findOne({
             where: {
                 nombre: salaData.nombre}
         }).then(result => {
@@ -28,7 +28,7 @@ var crearSala = async function (salaData){
                     errors: ["Ya existe una sala con ese nombre"]
                 }
             }
-            Sala.create(fetchSalaData).then(result => {
+            return Sala.create(fetchSalaData).then(result => {
                 if (result == null){
                     throw {
                         success: false,

@@ -16,7 +16,11 @@ var editarCasaEstudio = async function (cEstudioData){
                 errors: ["La Casa de Estudios no existe"]
             }
         }
-        return CasaEstudio.update(fetchCasaEstudio, {
+        const preCasaEstudio = {
+            nombre: fetchCasaEstudio.nombre == ""?result.nombre:fetchCasaEstudio.nombre,
+            direccion: fetchCasaEstudio.direccion == ""?result.direccion:fetchCasaEstudio.direccion
+        }
+        return CasaEstudio.update(preCasaEstudio, {
             where: {
                 id: fetchCasaEstudio.id
             }
