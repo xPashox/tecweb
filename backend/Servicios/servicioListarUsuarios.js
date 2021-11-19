@@ -24,11 +24,11 @@ var listarUsuarios = async function (){
 			}
 		})
 		.catch(err => {
-			return Promise.reject({
+			return {
 				success: false,
 				trace: "",
 				errors: ["Error en base de datos"]
-			})
+			}
 		})
 }
 
