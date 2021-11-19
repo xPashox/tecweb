@@ -15,7 +15,7 @@ var habilitarModulo = async function (id) {
 			})
 		}
 		return Modulo.update({
-			estado: 0
+			estado: 1
 		},{
 			where:{
 				id: id
