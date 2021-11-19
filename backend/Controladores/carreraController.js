@@ -35,7 +35,8 @@ exports.crearCarrera = async (req, res) => {
 		idCasaEstudio: req.body.idCasaEstudio,
 		nombre: req.body.nombre,
 		emailContacto: req.body.emailContacto,
-		telefono: req.body.telefono
+		telefono: req.body.telefono,
+		estado: 1
 	}
 	var crearCarreraResult = await ServicioCrearCarrera.crearCarrera(carreraData)
 	if(crearCarreraResult.success){
