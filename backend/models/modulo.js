@@ -33,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
-    nombre: DataTypes.TEXT
+    nombre: DataTypes.TEXT,
+    estado: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Modulo',

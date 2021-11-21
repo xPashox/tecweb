@@ -27,8 +27,10 @@ usuario.get("/listarusuarios", rutasProtegidas, usuarioController.listarUsuarios
 
 //Rutas tipo POST
 usuario.post("/login", usuarioController.login)
-usuario.post("/deshabilitar", rutasProtegidas, usuarioController.deshabilitarUsuario)
-usuario.post("/habilitar", rutasProtegidas, usuarioController.habilitarUsuario)
 usuario.post("/editar", rutasProtegidas, usuarioController.editarUsuario)
+
+//Rutas tipo PATCH
+usuario.patch("/deshabilitar", rutasProtegidas, usuarioController.deshabilitarUsuario)
+usuario.patch("/habilitar", rutasProtegidas, usuarioController.habilitarUsuario)
 
 module.exports = usuario

@@ -1,26 +1,26 @@
-const Usuario = require("../models/").Usuario
+const Usuario = require("../../models/").Usuario
 
 
-var habilitarUsuario = async function (email){
+var deshabilitarUsuario = async function (id){
 		return Usuario.findOne({
 			where: {
-				email: email
+				id: id
 			}
 		})
 		.then(user => {
 			if(user != null){
 				return Usuario.update({
-					estado: 1
+					estado: 0
 				},{
 				where:{
-					email: email
+					id: id
 				}
 				})
 				.then(user => {
 						return {
 							success: true,
-							trace: user,
-							errors:[]
+							trace: "El usuario ha sido deshabilitado con exito.",
+							errors: []
 						}
 					})
 					.catch(err => {
@@ -28,18 +28,18 @@ var habilitarUsuario = async function (email){
 							success: false,
 							trace: "",
 							errors: [
-								"No se ha podido habilitar el usuario."
+								"No se ha podido deshabilitar el usuario."
 							]
 						}
 				})
 			}else{
-				return {
+				return Promise.reject({
 					success: false,
 					trace: "",
 					errors: [
 						"El usuario no existe."
 					]
-				}
+				})
 			}
 		})
 		.catch(err => {
@@ -47,9 +47,9 @@ var habilitarUsuario = async function (email){
 			return {
 				success: false,
 				trace: "",
-				errors: ["Error en la base de datos"]
+				errors: err.errors!==undefined?err.errors:["Error en la base de datos"]
 			}
 		})
 }
 
-module.exports.habilitarUsuario = habilitarUsuario;
+module.exports.deshabilitarUsuario = deshabilitarUsuario;

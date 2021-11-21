@@ -28,7 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     nombre: DataTypes.TEXT,
     emailContacto: DataTypes.TEXT,
-    telefono: DataTypes.TEXT
+    telefono: DataTypes.TEXT,
+    estado:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Carrera',

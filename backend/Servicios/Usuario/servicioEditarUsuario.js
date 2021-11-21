@@ -1,4 +1,4 @@
-const Usuario = require("../models/").Usuario
+const Usuario = require("../../models/").Usuario
 
 
 var editarUsuario = async function (usuarioData){
@@ -36,13 +36,13 @@ var editarUsuario = async function (usuarioData){
 						}
 				})
 			}else{
-				return {
+				return Promise.reject({
 					success: false,
 					trace: "",
 					errors: [
 						"El usuario no existe"
 					]
-				}
+				})
 			}
 		})
 		.catch(err => {

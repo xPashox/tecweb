@@ -24,8 +24,18 @@ app.listen(4000, () => {
 })
 
 var Usuarios = require("./Rutas/usuarioRutas")
+var Carreras = require("./Rutas/carreraRutas")
+var Modulos = require("./Rutas/moduloRutas")
+var UsuariosRolCarreras = require("./Rutas/usuarioRolCarreraRutas")
+var Salas = require("./Rutas/salaRutas")
+var CasaEstudios = require("./Rutas/casaEstudioRutas")
 
 app.use("/usuario", Usuarios)
+app.use("/carrera", Carreras)
+app.use("/modulo", Modulos)
+app.use("/usuarioRolCarrera", UsuariosRolCarreras)
+app.use("/sala", Salas)
+app.use("/casaestudio", CasaEstudios)
 
 //Codigo para documentacion Swagger
 var swaggerUi = require('swagger-ui-express'),

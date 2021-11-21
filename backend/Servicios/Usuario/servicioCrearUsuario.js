@@ -1,5 +1,5 @@
-const Usuario = require("../models/").Usuario
-const UsuarioRol = require("../models/").UsuarioRol
+const Usuario = require("../../models/").Usuario
+const UsuarioRol = require("../../models/").UsuarioRol
 
 
 var crearUsuario = async function (usuarioData){
@@ -13,13 +13,13 @@ var crearUsuario = async function (usuarioData){
 				return Usuario.create(usuarioData)
 				.then(user1 => {
 					if (!user1){
-						return {
+						return Promise.reject({
 							success: false,
 							trace: "",
 							errors:[
 								"Ha ocurrido un error al momento de crear el usuario"
 							]
-						}
+						})
 					}
 					else{
 						const userRolData = {
@@ -54,13 +54,13 @@ var crearUsuario = async function (usuarioData){
 					}
 				})
 			}else{
-				return {
+				return Promise.reject({
 					success: false,
 					trace: "",
 					errors:[
 						"El usuario ya existe"
 					]
-				}
+				})
 			}
 		})
 		.catch(err => {

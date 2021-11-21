@@ -1,4 +1,4 @@
-const Usuario = require("../models/").Usuario
+const Usuario = require("../../models/").Usuario
 
 
 var listarUsuario = async function (email){
@@ -23,13 +23,13 @@ var listarUsuario = async function (email){
 				}
 			}
 			else{
-				return {
+				return Promise.reject({
 					success: false,
 					trace: "",
 					errors: [
 						"El usuario no existe"
 					]
-				}
+				})
 			}
 		})
 		.catch(err => {

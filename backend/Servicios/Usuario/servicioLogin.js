@@ -1,8 +1,8 @@
-const Usuario = require("../models").Usuario
-const UsuarioRol = require ("../models").UsuarioRol
+const Usuario = require("../../models/").Usuario
+const UsuarioRol = require("../../models/").UsuarioRol
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
-const _config = require("..")
+const _config = require("../../")
 
 let fetcheduser
 
