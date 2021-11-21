@@ -1,8 +1,8 @@
 const Modulo = require("../models/").Modulo
-const ServicioCrearModulo = require("../Servicios/servicioCrearModulo")
-const ServicioDeshabilitarModulo = require("../Servicios/servicioDeshabilitarModulo")
-const ServicioHabilitarModulo = require("../Servicios/servicioHabilitarModulo")
-const ServicioEditarModulo = require("../Servicios/servicioEditarModulo")
+const ServicioCrearModulo = require("../Servicios/Modulo/servicioCrearModulo")
+const ServicioDeshabilitarModulo = require("../Servicios/Modulo/servicioDeshabilitarModulo")
+const ServicioHabilitarModulo = require("../Servicios/Modulo/servicioHabilitarModulo")
+const ServicioEditarModulo = require("../Servicios/Modulo/servicioEditarModulo")
 
 exports.crearModulo = async (req, res) => {
 	if(typeof req.body.idCasaEstudio === "undefined" ||

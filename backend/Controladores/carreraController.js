@@ -1,8 +1,8 @@
 const Carrera = require("../models/").Carrera
-const ServicioCrearCarrera = require("../Servicios/servicioCrearCarrera")
-const ServicioDeshabilitarCarrera = require("../Servicios/servicioDeshabilitarCarrera")
-const ServicioHabilitarCarrera = require("../Servicios/servicioHabilitarCarrera")
-const ServicioEditarCarrera = require("../Servicios/servicioEditarCarrera")
+const ServicioCrearCarrera = require("../Servicios/Carrera/servicioCrearCarrera")
+const ServicioDeshabilitarCarrera = require("../Servicios/Carrera/servicioDeshabilitarCarrera")
+const ServicioHabilitarCarrera = require("../Servicios/Carrera/servicioHabilitarCarrera")
+const ServicioEditarCarrera = require("../Servicios/Carrera/servicioEditarCarrera")
 		/*id: {
       type: DataTypes.INTEGER,
       primaryKey: true,

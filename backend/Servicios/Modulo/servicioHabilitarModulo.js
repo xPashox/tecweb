@@ -1,4 +1,4 @@
-const Modulo = require("../models/").Modulo
+const Modulo = require("../../models/").Modulo
 
 var habilitarModulo = async function (id) {
 	return Modulo.findOne({

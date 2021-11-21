@@ -1,5 +1,5 @@
-const Usuario = require("../models/").Usuario
-const UsuarioRol = require("../models/").UsuarioRol
+const Usuario = require("../../models/").Usuario
+const UsuarioRol = require("../../models/").UsuarioRol
 
 
 var crearUsuario = async function (usuarioData){

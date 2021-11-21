@@ -15,7 +15,9 @@ carrera.put("/crear", rutasProtegidas, carreraController.crearCarrera)
 
 //Rutas tipo POST
 carrera.post("/editar", rutasProtegidas, carreraController.editarCarrera)
-carrera.post("/deshabilitar", rutasProtegidas, carreraController.deshabilitarCarrera)
-carrera.post("/habilitar", rutasProtegidas, carreraController.habilitarCarrera)
+
+//Rutas tipo PATCH
+carrera.patch("/deshabilitar", rutasProtegidas, carreraController.deshabilitarCarrera)
+carrera.patch("/habilitar", rutasProtegidas, carreraController.habilitarCarrera)
 
 module.exports = carrera

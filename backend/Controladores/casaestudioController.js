@@ -6,7 +6,7 @@ var _serviceListarCasaEstudio = require("../Servicios/CasaEstudio/servicioListar
 
 exports.crearCasaEstudio = async (req, res) => {
     if (req.body.nombre == "" || req.body.direccion == ""){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]
@@ -23,9 +23,9 @@ exports.crearCasaEstudio = async (req, res) => {
 }
 
 exports.editarCasaEstudio = async (req, res) => {
-    if (req.body.id == null || (req.body.nombre == "" && 
+    if (req.body.id == null || (req.body.nombre == "" &&
     req.body.direccion == "")){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]
@@ -43,7 +43,7 @@ exports.editarCasaEstudio = async (req, res) => {
 
 exports.deshabilitarCasaEstudio = async (req, res) => {
     if (req.body.id == null){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]
@@ -60,7 +60,7 @@ exports.deshabilitarCasaEstudio = async (req, res) => {
 
 exports.habilitarCasaEstudio = async (req, res) => {
     if (req.body.id == null){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]
@@ -77,7 +77,7 @@ exports.habilitarCasaEstudio = async (req, res) => {
 
 exports.obtenerCasaEstudio = async (req, res) => {
     if (req.body.id == null){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]

@@ -16,8 +16,12 @@ usuarioRolCarrera.put("/crear", rutasProtegidas, usuarioRolCarreraController.cre
 
 //Rutas con POST
 usuarioRolCarrera.post("/editar", rutasProtegidas, usuarioRolCarreraController.editarUsuarioRolCarrera)
-usuarioRolCarrera.post("/deshabilitar", rutasProtegidas, usuarioRolCarreraController.deshabilitarUsuarioRolCarrera)
-usuarioRolCarrera.post("/habilitar", rutasProtegidas, usuarioRolCarreraController.habilitarUsuarioRolCarrera)
-usuarioRolCarrera.post("/eliminar", rutasProtegidas, verificarRolUsuario.verificarRolAdministrador)
+
+//Rutas con PATCH
+usuarioRolCarrera.patch("/deshabilitar", rutasProtegidas, usuarioRolCarreraController.deshabilitarUsuarioRolCarrera)
+usuarioRolCarrera.patch("/habilitar", rutasProtegidas, usuarioRolCarreraController.habilitarUsuarioRolCarrera)
+
+//Rutas con DELETE
+usuarioRolCarrera.delete("/eliminar", rutasProtegidas, verificarRolUsuario.verificarRolAdministrador)
 
 module.exports = usuarioRolCarrera

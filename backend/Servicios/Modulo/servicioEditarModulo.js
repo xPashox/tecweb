@@ -1,4 +1,4 @@
-const Modulo = require("../models/").Modulo
+const Modulo = require("../../models/").Modulo
 
 var editarModulo = async function (moduloData){
 	return Modulo.findOne({

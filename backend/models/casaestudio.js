@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     nombre: DataTypes.TEXT,
-    direccion: DataTypes.TEXT
+    direccion: DataTypes.TEXT,
+    estado: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'CasaEstudio',

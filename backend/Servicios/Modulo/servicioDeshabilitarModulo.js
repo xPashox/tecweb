@@ -1,26 +1,30 @@
-const Modulo = require("../models/").Modulo
+const Modulo = require("../../models/").Modulo
 
-var crearModulo = async function (moduloData){
+var deshabilitarModulo = async function (id) {
 	return Modulo.findOne({
 		where:{
-			idCasaEstudio: moduloData.idCasaEstudio,
-			idCarrera: moduloData.idCarrera,
-			nombre: moduloData.nombre
+			id: id
 		}
 	})
 	.then(modulo => {
-		if(modulo){
+		if(!modulo){
 			return Promise.reject({
 				success: false,
 				trace: "",
-				errors: ["El modulo ya se encuentra creado dentro esta carrera y casa de estudio."]
+				errors: ["No se encuentra el modulo solicitado."]
 			})
 		}
-		return Modulo.create(moduloData)
+		return Modulo.update({
+			estado: 0
+		},{
+			where:{
+				id: id
+			}
+		})
 		.then(modulo1 => {
 			return {
 				success: true,
-				trace: "El modulo fue creado con exito.",
+				trace: "El modulo ha sido correctamente deshabilitado.",
 				errors: []
 			}
 		})
@@ -28,7 +32,7 @@ var crearModulo = async function (moduloData){
 			return {
 				success: false,
 				trace: "",
-				errors: ["No se pudo crear el modulo."]
+				errors: ["El modulo no ha podido ser deshabilitado."]
 			}
 		})
 	})
@@ -48,4 +52,4 @@ var crearModulo = async function (moduloData){
 	})
 }
 
-module.exports.crearModulo = crearModulo;
+module.exports.deshabilitarModulo = deshabilitarModulo;

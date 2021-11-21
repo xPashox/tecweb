@@ -1,13 +1,12 @@
-const Carrera = require("../models/").Carrera
+const Carrera = require("../../models/").Carrera
 
-var deshabilitarCarrera = async function (id){
+var habilitarCarrera = async function (id){
 	return Carrera.findOne({
 		where:{
 			id: id
 		}
 	})
 	.then(carrera => {
-		console.log(carrera)
 		if(!carrera){
 			return Promise.reject({
 				success: false,
@@ -16,7 +15,7 @@ var deshabilitarCarrera = async function (id){
 			})
 		}
 		return Carrera.update({
-				estado: 0
+				estado: 1
 			},{
 			where:{
 				id: id
@@ -25,7 +24,7 @@ var deshabilitarCarrera = async function (id){
 		.then(carrera1 => {
 			return {
 				success: true,
-				trace: "La carrera ha sido deshabilitada exitosamente.",
+				trace: "La carrera ha sido habilitada exitosamente.",
 				errors: []
 			}
 		})
@@ -33,7 +32,7 @@ var deshabilitarCarrera = async function (id){
 			return {
 				success: false,
 				trace: "",
-				errors: ["La carrera no ha podido ser deshabilitada"]
+				errors: ["La carrera no ha podido ser habilitada"]
 			}
 		})
 	})
@@ -53,4 +52,4 @@ var deshabilitarCarrera = async function (id){
 	})
 }
 
-module.exports.deshabilitarCarrera = deshabilitarCarrera;
+module.exports.habilitarCarrera = habilitarCarrera;

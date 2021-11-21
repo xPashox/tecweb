@@ -7,7 +7,7 @@ var _serviceListarSala = require("../Servicios/Sala/servicioListarSala")
 exports.crearSala = async (req, res) => {
     if (req.body.idCasaEstudio == null || req.body.nombre == "" ||
     req.body.aforo == null){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]
@@ -25,9 +25,9 @@ exports.crearSala = async (req, res) => {
 }
 
 exports.editarSala = async (req, res) => {
-    if (req.body.id == null || (req.body.idCasaEstudio == null && 
+    if (req.body.id == null || (req.body.idCasaEstudio == null &&
         req.body.nombre == "" && req.body.aforo == null)){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]
@@ -46,7 +46,7 @@ exports.editarSala = async (req, res) => {
 
 exports.deshabilitarSala = async (req, res) => {
     if (req.body.id == null || req.body.idCasaEstudio == null){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]
@@ -64,7 +64,7 @@ exports.deshabilitarSala = async (req, res) => {
 
 exports.habilitarSala = async (req, res) => {
     if (req.body.id == null || req.body.idCasaEstudio == null){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]
@@ -82,7 +82,7 @@ exports.habilitarSala = async (req, res) => {
 
 exports.obtenerSala = async (req, res) => {
     if (req.body.id == null || req.body.idCasaEstudio == null){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]
@@ -100,7 +100,7 @@ exports.obtenerSala = async (req, res) => {
 
 exports.listarSalas = async (req, res) => {
     if (req.body.idCasaEstudio == null){
-        res.json({
+        return res.json({
             success: false,
             trace: "",
             errors: ["Modelo no valido"]

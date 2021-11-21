@@ -15,7 +15,9 @@ modulo.put("/crear", rutasProtegidas, moduloController.crearModulo)
 
 //Rutas tipo POST
 modulo.post("/editar", rutasProtegidas, moduloController.editarModulo)
-modulo.post("/habilitar", rutasProtegidas, moduloController.habilitarModulo)
-modulo.post("/deshabilitar", rutasProtegidas, moduloController.deshabilitarModulo)
+
+//Rutas tipo PATCH
+modulo.patch("/habilitar", rutasProtegidas, moduloController.habilitarModulo)
+modulo.patch("/deshabilitar", rutasProtegidas, moduloController.deshabilitarModulo)
 
 module.exports = modulo

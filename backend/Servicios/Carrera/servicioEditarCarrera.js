@@ -1,4 +1,4 @@
-const Carrera = require("../models/").Carrera
+const Carrera = require("../../models/").Carrera
 
 var editarCarrera = async function (carreraData){
 	return Carrera.findOne({

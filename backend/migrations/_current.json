@@ -63,6 +63,10 @@
                     "field": "direccion",
                     "seqType": "Sequelize.TEXT"
                 },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -568,5 +572,5 @@
     "path": "C:\\Users\\Maximo Hernandez\\Documents\\Repositorios\\tecweb\\backend\\migrations\\_current.json",
     "backupPath": "C:\\Users\\Maximo Hernandez\\Documents\\Repositorios\\tecweb\\backend\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 4
+    "revision": 5
 }

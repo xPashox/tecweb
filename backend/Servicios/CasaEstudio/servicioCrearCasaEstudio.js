@@ -6,7 +6,7 @@ var crearCasaEstudio = async function (cEstudioData){
     fetchCasaEstudio = cEstudioData
     return CasaEstudio.findOne({
         where: {
-            id: cEstudioData.nombre
+            nombre: cEstudioData.nombre
         }
     }).then(result => {
         if (result != null){

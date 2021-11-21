@@ -1,12 +1,12 @@
 const Usuario = require("../models/").Usuario
 const bcrypt = require("bcrypt")
-var ServicioCrearUsuario = require("../Servicios/servicioCrearUsuario")
-var ServicioDeshabilitarUsuario = require("../Servicios/servicioDeshabilitarUsuario")
-var ServicioHabilitarUsuario = require("../Servicios/servicioHabilitarUsuario")
-var ServicioEditarUsuario = require("../Servicios/servicioEditarUsuario")
-var ServicioListarUsuario = require("../Servicios/servicioListarUsuario")
-var ServicioListarUsuarios = require("../Servicios/servicioListarUsuarios")
-var ServicioLogin = require("../Servicios/servicioLogin")
+var ServicioCrearUsuario = require("../Servicios/Usuario/servicioCrearUsuario")
+var ServicioDeshabilitarUsuario = require("../Servicios/Usuario/servicioDeshabilitarUsuario")
+var ServicioHabilitarUsuario = require("../Servicios/Usuario/servicioHabilitarUsuario")
+var ServicioEditarUsuario = require("../Servicios/Usuario/servicioEditarUsuario")
+var ServicioListarUsuario = require("../Servicios/Usuario/servicioListarUsuario")
+var ServicioListarUsuarios = require("../Servicios/Usuario/servicioListarUsuarios")
+var ServicioLogin = require("../Servicios/Usuario/servicioLogin")
 
 //Falta añadir verificación de tipo de usuario
 
@@ -17,7 +17,7 @@ exports.crearUsuario = async (req, res) => {
 			req.body.clave == "" || req.body.clave == null ||
 			req.body.rol < 1 || req.body.rol > 4)
 	{
-		res.json({
+		return res.json({
 			success: false,
 			trace: "",
 			errors: ["Usuario no valido."]
@@ -49,16 +49,16 @@ exports.crearUsuario = async (req, res) => {
 }
 
 exports.deshabilitarUsuario = async (req, res) => {
-	if(req.body.email == "" || req.body.email == null){
-		res.json({
+	if(req.body.id == "" || req.body.id == null){
+		return res.json({
 			success: false,
 			trace: "",
 			errors:[
-				"Email no valido."
+				"Faltan datos."
 			]
 		})
 	}
-	var deshabilitarUsuarioResult = await ServicioDeshabilitarUsuario.deshabilitarUsuario(req.body.email)
+	var deshabilitarUsuarioResult = await ServicioDeshabilitarUsuario.deshabilitarUsuario(req.body.id)
 	if(deshabilitarUsuarioResult.success){
 		res.json({
 			success: true,
@@ -76,16 +76,16 @@ exports.deshabilitarUsuario = async (req, res) => {
 }
 
 exports.habilitarUsuario = async (req, res) => {
-	if(req.body.email == "" || req.body.email == null){
-			res.json({
+	if(req.body.id == "" || req.body.id == null){
+			return res.json({
 				success: false,
 				trace: "",
 				errors:[
-					"Falta el parametro email."
+					"Faltan datos."
 				]
 			})
 		}
-		var habilitarUsuarioResult = await ServicioHabilitarUsuario.habilitarUsuario(req.body.email)
+		var habilitarUsuarioResult = await ServicioHabilitarUsuario.habilitarUsuario(req.body.id)
 		if(habilitarUsuarioResult.success){
 			res.json({
 				success: true,
@@ -110,7 +110,7 @@ exports.editarUsuario = async (req, res) => {
 			req.body.apellidos == "" || req.body.apellidos == null ||
 			req.body.clave == "" || req.body.clave == null)
 	{
-		res.status(400).json({
+		return res.status(400).json({
 			success: false,
 			trace: "",
 			errors:[
@@ -145,7 +145,7 @@ exports.editarUsuario = async (req, res) => {
 
 exports.listarUsuario = async (req, res) => {
 	if(req.body.email == "" || req.body.email == null){
-		res.json({
+		return res.json({
 			success: false,
 			trace: "",
 			errors:[
@@ -193,7 +193,7 @@ exports.listarUsuarios = async (req, res) => {
  */
 exports.login = async (req, res) => {
 	if (req.body.email == "" || req.body.password == ""){
-		res.json({
+		return res.json({
 			success: false,
 			trace: "",
 			errors:[

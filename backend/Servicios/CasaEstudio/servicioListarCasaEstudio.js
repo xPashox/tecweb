@@ -7,7 +7,7 @@ var obtenerCasaEstudio = async function (cEstudioData){
     return CasaEstudio.findOne({
         where: {
             id: cEstudioData.id,
-            estado: 1
+            //estado: 1
         }
     }).then(result => {
         if (result == null){
@@ -25,7 +25,7 @@ var obtenerCasaEstudio = async function (cEstudioData){
         return {
             success: true,
             trace: casaestudio,
-            errors: [] 
+            errors: []
         }
     }).catch(err => {
         return err
@@ -50,7 +50,7 @@ var listarCasasEstudio = async function (){
             const casaestudio = {
                 id: arCasaEstudio[i].id,
                 nombre: arCasaEstudio[i].nombre,
-                direccion: arCasaEstudio[i].direccion    
+                direccion: arCasaEstudio[i].direccion
             }
             listCasasEstudio.push(casaestudio)
         }
