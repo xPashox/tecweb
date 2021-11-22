@@ -1,7 +1,9 @@
 /* Variables Ambiente */
 require('dotenv').config()
 module.exports = {
-	JWTSecret: process.env.JWT_SECRET
+	JWTSecret: process.env.JWT_SECRET,
+	SendgridKey: process.env.SENDGRID_KEY,
+	SendgridEmail: process.env.SENDGRID_EMAIL
 }
 //Archivo servidor
 const express = require('express');
@@ -28,7 +30,7 @@ var Carreras = require("./Rutas/carreraRutas")
 var Modulos = require("./Rutas/moduloRutas")
 var UsuariosRolCarreras = require("./Rutas/usuarioRolCarreraRutas")
 var Salas = require("./Rutas/salaRutas")
-var CasaEstudios = require("./Rutas/casaEstudioRutas")
+var CasaEstudios = require("./Rutas/casaestudioRutas")
 
 app.use("/usuario", Usuarios)
 app.use("/carrera", Carreras)

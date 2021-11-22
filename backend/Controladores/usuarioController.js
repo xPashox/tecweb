@@ -7,6 +7,7 @@ var ServicioEditarUsuario = require("../Servicios/Usuario/servicioEditarUsuario"
 var ServicioListarUsuario = require("../Servicios/Usuario/servicioListarUsuario")
 var ServicioListarUsuarios = require("../Servicios/Usuario/servicioListarUsuarios")
 var ServicioLogin = require("../Servicios/Usuario/servicioLogin")
+var ServicioRecuperarClave = require("../Servicios/Usuario/RecuperarClave/servicioRecuperarClave")
 
 //Falta añadir verificación de tipo de usuario
 
@@ -219,4 +220,40 @@ exports.login = async (req, res) => {
 			trace: loginresult.trace
 		})
 	}
+}
+
+exports.recuperarClave = async (req, res) => {
+	if (req.body.email == ""){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Modelo no valido."]
+		})
+	}
+
+	res.json(await ServicioRecuperarClave.solicitarCambioClave(req.body.email))
+}
+
+exports.generarCambioClave = async (req, res) => {
+	if (req.body.clave == "" || req.body.claveConfirm == ""){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["El modelo no es valido."]
+		})
+	}
+
+	if (req.body.clave != req.body.claveConfirm || req.body.clave.length < 6){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["La clave es demasiado corta o no son iguales."]
+		})
+	}
+
+	const userData = {
+		clave: await bcrypt.hash(req.body.clave,10),
+		token: req.body.token
+	}
+	res.json(await ServicioRecuperarClave.generarCambioClave(userData))
 }

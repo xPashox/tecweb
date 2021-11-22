@@ -28,6 +28,8 @@ usuario.get("/listarusuarios", rutasProtegidas, usuarioController.listarUsuarios
 //Rutas tipo POST
 usuario.post("/login", usuarioController.login)
 usuario.post("/editar", rutasProtegidas, usuarioController.editarUsuario)
+usuario.post("/recuperarclave", usuarioController.recuperarClave)
+usuario.post("/generarcambioclave", usuarioController.generarCambioClave)
 
 //Rutas tipo PATCH
 usuario.patch("/deshabilitar", rutasProtegidas, usuarioController.deshabilitarUsuario)
