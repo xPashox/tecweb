@@ -28,7 +28,6 @@ exports.crearUsuario = async (req, res) => {
 		email: req.body.email,
 		nombres: req.body.nombres,
 		apellidos: req.body.apellidos,
-		clave: await bcrypt.hash(req.body.clave,10),
 		estado: 1,
 		rol: req.body.rol
 	}
@@ -124,7 +123,7 @@ exports.editarUsuario = async (req, res) => {
 			email: req.body.email,
 			nombres: req.body.nombres,
 			apellidos: req.body.apellidos,
-			clave: req.body.clave,
+			clave:  await bcrypt.hash(req.body.clave,10),
 		}
 		var editResult =  await ServicioEditarUsuario.editarUsuario(usuarioData)
 		if(editResult.success){

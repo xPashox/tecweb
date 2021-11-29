@@ -31,6 +31,10 @@ var Modulos = require("./Rutas/moduloRutas")
 var UsuariosRolCarreras = require("./Rutas/usuarioRolCarreraRutas")
 var Salas = require("./Rutas/salaRutas")
 var CasaEstudios = require("./Rutas/casaestudioRutas")
+var ModuloSalas = require("./Rutas/moduloSalaRutas")
+var UsuariosRolModulos = require("./Rutas/usuarioRolModuloRutas")
+var UsuarioRolModuloSalaReservas = require("./Rutas/usuarioRolModuloSalaReservaRutas")
+var UsuarioRolModuloSubscripcion = require("./Rutas/usuarioRolModuloSubscripcionRutas")
 
 app.use("/usuario", Usuarios)
 app.use("/carrera", Carreras)
@@ -38,6 +42,10 @@ app.use("/modulo", Modulos)
 app.use("/usuarioRolCarrera", UsuariosRolCarreras)
 app.use("/sala", Salas)
 app.use("/casaestudio", CasaEstudios)
+app.use("/modulosala", ModuloSalas)
+app.use("/usuariorolmodulo", UsuariosRolModulos)
+app.use("/usuariorolmodulosalareservas", UsuarioRolModuloSalaReservas)
+app.use("/usuariorolmodulosubscripcion", UsuarioRolModuloSubscripcion)
 
 //Codigo para documentacion Swagger
 var swaggerUi = require('swagger-ui-express'),

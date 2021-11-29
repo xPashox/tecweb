@@ -12,8 +12,7 @@ var editarUsuario = async function (usuarioData){
 				return Usuario.update({
 					email: usuarioData.email,
 					nombres: usuarioData.nombres,
-					apellidos: usuarioData.apellidos,
-					clave: usuarioData.clave
+					apellidos: usuarioData.apellidos
 				},{
 					where:{
 						email: usuarioData.email
