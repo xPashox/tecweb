@@ -8,7 +8,7 @@ var editarModuloSala = async function (moduloSalaData){
 		}
 	})
 	.then(moduloSala => {
-		if(moduloSala){
+		if(moduloSala && moduloSala.id != moduloSalaData.id){
 			return Promise.reject({
 				success: false,
 				trace: "",

@@ -9,7 +9,7 @@ var editarModulo = async function (moduloData){
 		}
 	})
 	.then(modulo => {
-		if(modulo){
+		if(modulo && modulo.id != moduloData.id){
 			return Promise.reject({
 				success: false,
 				trace: "",

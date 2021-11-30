@@ -7,7 +7,7 @@ const randomString = require("randomstring")
 exports.crearModuloSala = async (req, res) => {
 	if(req.body.idSala == undefined ||
 		req.body.idModulo == undefined ||
-		req.body.idUsuarioRol == undefined ||
+		req.body.idUsuarioRolModulo == undefined ||
 		req.body.nombre == undefined ||
 		req.body.descripcion == undefined ||
 		req.body.cantidadAlumnos == undefined ||
@@ -24,7 +24,7 @@ exports.crearModuloSala = async (req, res) => {
 	var moduloSalaData = {
 		idSala: req.body.idSala,
 		idModulo: req.body.idModulo,
-		idUsuarioRol: req.body.idUsuarioRol,
+		idUsuarioRolModulo: req.body.idUsuarioRolModulo,
 		nombre: req.body.nombre,
 		descripcion: req.body.descripcion,
 		cantidadAlumnos: req.body.cantidadAlumnos,
@@ -39,7 +39,7 @@ exports.crearModuloSala = async (req, res) => {
 exports.editarModuloSala = async (req, res) =>{
 	if(req.body.idSala == undefined ||
 		req.body.idModulo == undefined ||
-		req.body.idUsuarioRol == undefined ||
+		req.body.idUsuarioRolModulo == undefined ||
 		req.body.nombre == undefined ||
 		req.body.descripcion == undefined ||
 		req.body.cantidadAlumnos == undefined ||
@@ -56,7 +56,7 @@ exports.editarModuloSala = async (req, res) =>{
 		id: req.body.id,
 		idSala: req.body.idSala,
 		idModulo: req.body.idModulo,
-		idUsuarioRol: req.body.idUsuarioRol,
+		idUsuarioRolModulo: req.body.idUsuarioRolModulo,
 		nombre: req.body.nombre,
 		descripcion: req.body.descripcion,
 		cantidadAlumnos: req.body.cantidadAlumnos,

@@ -8,7 +8,7 @@ var editarUsuarioRolModulo = async function (usuarioRolModuloData){
 		}
 	})
 	.then(usuarioRolModulo => {
-		if(usuarioRolModulo){
+		if(usuarioRolModulo && usuarioRolModulo.id != usuarioRolModuloData.id){
 			return Promise.reject({errors: ["La relacion ya existe."]})
 		}
 		return UsuarioRolModulo.update({

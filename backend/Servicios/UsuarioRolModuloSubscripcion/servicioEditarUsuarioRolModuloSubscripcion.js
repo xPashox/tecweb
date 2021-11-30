@@ -8,7 +8,7 @@ var editarUsuarioRolModuloSubscripcion = async function (urmsData){
 		}
 	})
 	.then(urmsResult => {
-		if(urmsResult)
+		if(urmsResult && urmsData.id != urmsResult.id)
 			return Promise.reject({errors: ["Ya existe la subscripcion."]})
 		return urms.update({
 			idModulo: urmsData.idModulo,

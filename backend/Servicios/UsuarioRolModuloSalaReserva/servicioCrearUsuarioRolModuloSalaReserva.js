@@ -11,9 +11,9 @@ var crearUsuarioRolModuloSalaReserva = async function (urmsrData){
 		if(reserva){
 			return Promise.reject({errors: ["La reserva ya existe."]})
 		}
-		URMSR.create(urmsrData)
+		return URMSR.create(urmsrData)
 		.then(result => {
-			//Enviar correo
+			console.log("Baba")
 			return {
 				success: true,
 				trace: "Reserva realizada exitosamente.",

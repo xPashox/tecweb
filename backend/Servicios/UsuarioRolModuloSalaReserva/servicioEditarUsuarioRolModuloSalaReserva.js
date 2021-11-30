@@ -8,12 +8,13 @@ var editarUsuarioRolModuloSalaReserva = async function (urmsrData){
 		}
 	})
 	.then(reserva => {
-		if(reserva){
+		if(reserva && reserva.id != urmsrData.id){
 			return Promise.reject({errors: ["La reserva ya existe."]})
 		}
-		URMSR.update({
+		return URMSR.update({
 			idUsuarioRol: urmsrData.idUsuarioRol,
-			idModuloSala: urmsrData.idModuloSala
+			idModuloSala: urmsrData.idModuloSala,
+			fecha: urmsrData.fecha
 		},{
 			where:{
 				id: urmsrData.id
