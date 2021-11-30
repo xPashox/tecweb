@@ -8,6 +8,7 @@ var ServicioListarUsuario = require("../Servicios/Usuario/servicioListarUsuario"
 var ServicioListarUsuarios = require("../Servicios/Usuario/servicioListarUsuarios")
 var ServicioLogin = require("../Servicios/Usuario/servicioLogin")
 var ServicioRecuperarClave = require("../Servicios/Usuario/RecuperarClave/servicioRecuperarClave")
+var ServicioListarUsuarioYRol = require("../Servicios/Usuario/servicioListarUsuarioYRol")
 
 //Falta añadir verificación de tipo de usuario
 
@@ -255,4 +256,8 @@ exports.generarCambioClave = async (req, res) => {
 		token: req.body.token
 	}
 	res.json(await ServicioRecuperarClave.generarCambioClave(userData))
+}
+
+exports.listarUsuarioYRol = async (req, res) => {
+	res.json(await ServicioListarUsuarioYRol.listarUsuarioYRol())
 }
