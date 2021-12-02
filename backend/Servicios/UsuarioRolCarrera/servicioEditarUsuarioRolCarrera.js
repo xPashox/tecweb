@@ -8,7 +8,7 @@ var editarUsuarioRolCarrera = async function(usuarioRolCarreraData){
 		}
 	})
 	.then(usuarioRolCarrrera => {
-		if(usuarioRolCarrrera){
+		if(usuarioRolCarrrera && usuarioRolCarrrera.id != usuarioRolCarreraData.id){
 			return Promise.reject({
 				success: false,
 				trace: "",

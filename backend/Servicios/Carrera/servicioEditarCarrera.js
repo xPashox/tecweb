@@ -8,7 +8,7 @@ var editarCarrera = async function (carreraData){
 		}
 	})
 	.then(carrera => {
-		if(carrera != null){
+		if(carrera != null && carrera.id != carreraData.id){
 			return Promise.reject({
 				success: false,
 				trace: "",
