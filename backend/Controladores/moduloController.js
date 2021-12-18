@@ -3,7 +3,7 @@ const ServicioCrearModulo = require("../Servicios/Modulo/servicioCrearModulo")
 const ServicioDeshabilitarModulo = require("../Servicios/Modulo/servicioDeshabilitarModulo")
 const ServicioHabilitarModulo = require("../Servicios/Modulo/servicioHabilitarModulo")
 const ServicioEditarModulo = require("../Servicios/Modulo/servicioEditarModulo")
-
+const ServicioListarModulo = require("../Servicios/Modulo/servicioListarModulo")
 exports.crearModulo = async (req, res) => {
 	if(typeof req.body.idCasaEstudio === "undefined" ||
 		 typeof req.body.idCarrera === "undefined" ||
@@ -128,3 +128,46 @@ exports.deshabilitarModulo = async (req, res) => {
 		})
 	}
 }
+
+exports.obtenerModulo = async (req, res) => {
+	if(req.body.id == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros."]
+		})
+	}
+	var moduloData = {
+		id: req.body.id
+	}
+	res.json(await ServicioListarModulo.obtenerModulo(moduloData))
+}
+
+exports.listarModulos = async (req, res) => {
+	res.json(await ServicioListarModulo.listarModulos())
+}
+
+exports.listarModuloPorCarrera = async (req, res) => {
+	if(req.body.idCarrera == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros."]
+		})
+	}
+	res.json(await ServicioListarModulo.listarModuloPorCarrera(idCarrera))
+}
+
+exports.listarModuloPorCasaEstudio = async (req, res) => {
+	if(req.body.idCasaEstudio == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros"]
+		})
+	}
+	res.json(await ServicioListarModulo.listarModuloPorCasaEstudio(idCasaEstudio))
+}
+
+
+

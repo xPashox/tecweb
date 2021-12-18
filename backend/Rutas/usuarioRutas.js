@@ -22,7 +22,7 @@ usuario.put("/crear", rutasProtegidas,
 //Rutas tipo GET
 usuario.get("/listarusuario", rutasProtegidas,
 	usuarioController.listarUsuario)
-usuario.get("/listarusuarioyrol", usuarioController.listarUsuarioYRol)
+usuario.get("/listarusuarioyrol", usuarioController.listarUsuarioPorRol)
 
 usuario.get("/listarusuarios", rutasProtegidas, usuarioController.listarUsuarios)
 

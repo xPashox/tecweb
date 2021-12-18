@@ -16,6 +16,11 @@ carrera.put("/crear", rutasProtegidas, carreraController.crearCarrera)
 //Rutas tipo POST
 carrera.post("/editar", rutasProtegidas, carreraController.editarCarrera)
 
+//Rutas tipo GET
+carrera.get("/obtener", rutasProtegidas, carreraController.obtenerCarrera)
+carrera.get("/listar", rutasProtegidas, carreraController.listarCarreras)
+carrera.get("/listarporcasaestudio", rutasProtegidas, carreraController.listarCarrerasPorCasaEstudio)
+
 //Rutas tipo PATCH
 carrera.patch("/deshabilitar", rutasProtegidas, carreraController.deshabilitarCarrera)
 carrera.patch("/habilitar", rutasProtegidas, carreraController.habilitarCarrera)

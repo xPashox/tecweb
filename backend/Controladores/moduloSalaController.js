@@ -2,6 +2,7 @@ const ServicioCrearModuloSala = require("../Servicios/ModuloSala/servicioCrearMo
 const ServicioDeshabilitarModuloSala = require("../Servicios/ModuloSala/servicioDeshabilitarModuloSala.js")
 const ServicioEditarModuloSala = require("../Servicios/ModuloSala/servicioEditarModuloSala.js")
 const ServicioHabilitarModuloSala = require("../Servicios/ModuloSala/servicioHabilitarModuloSala.js")
+const ServicioListarModuloSala = require("../Servicios/ModuloSala/servicioListarModuloSala.js")
 const randomString = require("randomstring")
 
 exports.crearModuloSala = async (req, res) => {
@@ -87,4 +88,44 @@ exports.habilitarModuloSala = async (req, res) => {
 		})
 	}
 	res.json(await ServicioHabilitarModuloSala.habilitarModuloSala(req.body.id))
+}
+
+exports.obtenerModuloSala = async (req, res) => {
+	if(req.body.id == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros."]
+		})
+	}
+	const obtenerModuloSalaData = {
+		id: req.body.id
+	}
+	res.json(await ServicioListarModuloSala.obtenerModuloSala(obtenerModuloSalaData))
+}
+
+exports.listarModuloSala = async (req, res) => {
+	res.json(await ServicioListarModuloSala.listarModuloSala())
+}
+
+exports.listarModuloSalaPorSala = async (req, res) => {
+	if(req.body.idSala == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros."]
+		})
+	}
+	res.json(await ServicioListarModuloSala.listarModuloSalaPorSala(req.body.idSala))
+}
+
+exports.listarModuloSalaPorModulo = async (req, res) => {
+	if(req.body.idModulo == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros."]
+		})
+	}
+	res.json(await ServicioListarModuloSala.listarModuloSalaPorModulo(req.body.idModulo))
 }

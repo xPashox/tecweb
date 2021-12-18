@@ -13,6 +13,12 @@ usuarioRolModulo.use(cors())
 //Rutas tipo PUT
 usuarioRolModulo.put("/crear", rutasProtegidas, usuarioRolModuloController.crearUsuarioRolModulo)
 
+//Rutas tipo GET
+usuarioRolModulo.get("/obtener", rutasProtegidas, usuarioRolModuloController.obtenerUsuarioRolModulo)
+usuarioRolModulo.get("/listar", rutasProtegidas, usuarioRolModuloController.listarUsuarioRolModulo)
+usuarioRolModulo.get("/listarporusuariorol", rutasProtegidas, usuarioRolModuloController.listarUsuarioRolModuloPorUsuarioRol)
+usuarioRolModulo.get("/listarpormodulo", rutasProtegidas, usuarioRolModuloController.listarUsuarioRolModuloPorModulo)
+
 //Rutas tipo POST
 usuarioRolModulo.post("/editar", rutasProtegidas, usuarioRolModuloController.editarUsuarioRolModulo)
 

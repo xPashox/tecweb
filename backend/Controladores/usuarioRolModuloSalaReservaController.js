@@ -2,6 +2,7 @@ const ServicioCrearUsuarioRolModuloSalaReserva = require("../Servicios/UsuarioRo
 const ServicioDeshabilitarUsuarioRolModuloSalaReserva = require("../Servicios/UsuarioRolModuloSalaReserva/servicioDeshabilitarUsuarioRolModuloSalaReserva.js")
 const ServicioHabilitarUsuarioRolModuloSalaReserva = require("../Servicios/UsuarioRolModuloSalaReserva/servicioHabilitarUsuarioRolModuloSalaReserva.js")
 const ServicioEditarUsuarioRolModuloSalaReserva = require("../Servicios/UsuarioRolModuloSalaReserva/servicioEditarUsuarioRolModuloSalaReserva.js")
+const ServicioListarUsuarioRolModuloSalaReserva = require("../Servicios/UsuarioRolModuloSalaReserva/servicioListarUsuarioRolModuloSalaReserva.js")
 
 exports.crearUsuarioRolModuloSalaReserva = async (req, res) => {
 	if(req.body.idUsuarioRol == undefined ||
@@ -62,4 +63,44 @@ exports.habilitarUsuarioRolModuloSalaReserva = async (req, res) => {
 		})
 	}
 	res.json(await ServicioHabilitarUsuarioRolModuloSalaReserva.habilitarUsuarioRolModuloSalaReserva(req.body.id))
+}
+
+exports.obtenerUsuarioRolModuloSalaReserva = async (req, res) => {
+	if(req.body.id == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros."]
+		})
+	}
+	const urmsr = {
+		id: req.body.id
+	}
+	res.json(await ServicioListarUsuarioRolModuloSalaReserva.obtenerUsuarioRolModuloSalaReserva(urmsr))
+}
+
+exports.listarUsuarioRolModuloSalaReserva = async (req, res) => {
+	res.json(await ServicioListarUsuarioRolModuloSalaReserva.obtenerUsuarioRolModuloSalaReserva())
+}
+
+exports.listarUsuarioRolModuloSalaReservaPorUsuarioRol = async (req, res) => {
+	if(req.body.idUsuarioRol == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros."]
+		})
+	}
+	res.json(await ServicioListarUsuarioRolModuloSalaReserva.obtenerUsuarioRolModuloSalaReserva(req.body.idUsuarioRol))
+}
+
+exports.listarUsuarioRolModuloSalaReservaPorModuloSala = async (req, res) => {
+	if(req.body.idModuloSala == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros."]
+		})
+	}
+	res.json(await ServicioListarUsuarioRolModuloSalaReserva.obtenerUsuarioRolModuloSalaReserva(req.body.idModuloSala))
 }

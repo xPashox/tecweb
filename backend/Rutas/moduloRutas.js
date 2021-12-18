@@ -13,6 +13,12 @@ modulo.use(cors())
 //Rutas tipo PUT
 modulo.put("/crear", rutasProtegidas, moduloController.crearModulo)
 
+//Rutass tipo get
+modulo.get("/obtener", rutasProtegidas, moduloController.obtenerModulo)
+modulo.get("/listar", rutasProtegidas, moduloController.listarModulos)
+modulo.get("/listarporcarrera", rutasProtegidas, moduloController.listarModuloPorCarrera)
+modulo.get("/listarporcasaestudio", rutasProtegidas, moduloController.listarModuloPorCasaEstudio)
+
 //Rutas tipo POST
 modulo.post("/editar", rutasProtegidas, moduloController.editarModulo)
 

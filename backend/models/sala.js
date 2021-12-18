@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Sala.belongsTo(models.CasaEstudio, {foreignKey:'idCasaEstudio'});
+      Sala.hasMany(models.ModuloSala, {foreignKey:'idSala'});
     }
   };
   Sala.init({
@@ -35,3 +36,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Sala;
 };
+
+
+
+
