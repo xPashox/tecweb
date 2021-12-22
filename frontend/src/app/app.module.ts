@@ -16,6 +16,9 @@ import { AdminClassComponent } from './componentes/admin-class/admin-class.compo
 import { AdminModuleComponent } from './componentes/admin-module/admin-module.component';
 import { AdminCareerComponent } from './componentes/admin-career/admin-career.component';
 import { AdminSedeComponent } from './componentes/admin-sede/admin-sede.component';
+import { AdminRoomComponent } from './componentes/admin-room/admin-room.component';
+import { AdminSubscriptionComponent } from './componentes/admin-subscription/admin-subscription.component';
+import { AdminEventComponent } from './componentes/admin-event/admin-event.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { AdminSedeComponent } from './componentes/admin-sede/admin-sede.componen
     AdminClassComponent,
     AdminModuleComponent,
     AdminCareerComponent,
-    AdminSedeComponent
+    AdminSedeComponent,
+    AdminRoomComponent,
+    AdminSubscriptionComponent,
+    AdminEventComponent
   ],
   imports: [
     BrowserModule,

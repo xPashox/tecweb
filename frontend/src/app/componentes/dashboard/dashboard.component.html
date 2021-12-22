@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       
       <!-- OPCIONES ADMIN -->
-      <ul *appRole="1" class="navbar-nav">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a id="dashboard" class="nav-link text-white" [ngClass]="{'active bg-gradient-primary': seccion == 1}" (click)="onClickSeccion($event)">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -19,7 +19,7 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li *appRole="[1,2]" class="nav-item">
           <a id="user" class="nav-link text-white" [ngClass]="{'active bg-gradient-primary': seccion == 2}" (click)="onClickSeccion($event)"> 
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person_add</i>
@@ -27,15 +27,15 @@
             <span class="nav-link-text ms-1">Gestión de usuarios</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a id="class" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 3}" (click)="onClickSeccion($event)">
+        <li *appRole="[1,2]" class="nav-item">
+          <a id="room" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 3}" (click)="onClickSeccion($event)">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">class</i>
             </div>
             <span class="nav-link-text ms-1">Gestión de salas</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li *appRole="[1,2]" class="nav-item">
           <a id="module" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 4}" (click)="onClickSeccion($event)">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_module</i>
@@ -43,16 +43,40 @@
             <span class="nav-link-text ms-1">Gestión de módulos</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a id="career" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 5}" (click)="onClickSeccion($event)">
+        <li *appRole="[3]" class="nav-item">
+          <a id="class" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 5}" (click)="onClickSeccion($event)">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">menu_book</i>
+            </div>
+            <span class="nav-link-text ms-1">Gestión de clases</span>
+          </a>
+        </li>
+        <li *appRole="[4]" class="nav-item">
+          <a id="subscription" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 6}" (click)="onClickSeccion($event)">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">fact_check</i>
+            </div>
+            <span class="nav-link-text ms-1">Gestión suscripción módulo</span>
+          </a>
+        </li>
+        <li *appRole="[4]" class="nav-item">
+          <a id="event" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 7}" (click)="onClickSeccion($event)">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">event</i>
+            </div>
+            <span class="nav-link-text ms-1">Gestión reserva</span>
+          </a>
+        </li>
+        <li *appRole="[1]" class="nav-item">
+          <a id="career" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 8}" (click)="onClickSeccion($event)">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">school</i>
             </div>
             <span class="nav-link-text ms-1">Gestión carrera</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a id="sede" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 6}" (click)="onClickSeccion($event)">
+        <li *appRole="[1]" class="nav-item">
+          <a id="sede" class="nav-link text-white " [ngClass]="{'active bg-gradient-primary': seccion == 9}" (click)="onClickSeccion($event)">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">apartment</i>
             </div>
@@ -194,10 +218,13 @@
       <!--AQUI VA CUERPO-->
       <app-admin-dashboard *ngIf="seccion == 1" ></app-admin-dashboard>
       <app-admin-user *ngIf="seccion == 2" ></app-admin-user>
-      <app-admin-class *ngIf="seccion == 3"></app-admin-class>
+      <app-admin-room *ngIf="seccion == 3"></app-admin-room>
       <app-admin-module *ngIf="seccion == 4"></app-admin-module>
-      <app-admin-career *ngIf="seccion == 5"></app-admin-career>
-      <app-admin-sede *ngIf="seccion == 6"></app-admin-sede>
+      <app-admin-class *ngIf="seccion == 5"></app-admin-class>
+      <app-admin-subscription *ngIf="seccion == 6"></app-admin-subscription>
+      <app-admin-event *ngIf="seccion == 7"></app-admin-event>
+      <app-admin-career *ngIf="seccion == 8"></app-admin-career>
+      <app-admin-sede *ngIf="seccion == 9"></app-admin-sede>
     </div>
   </main>
   <script>

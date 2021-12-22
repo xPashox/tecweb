@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/servicios/api.service';
 })
 export class RoleDirective implements OnInit {
   private currentUserRol: number;
-  private rol: number;
+  private roles: Array<number>;
 
   constructor(
     private templateRef: TemplateRef<any>,
@@ -15,7 +15,7 @@ export class RoleDirective implements OnInit {
   ) 
   { 
     this.currentUserRol = 0;
-    this.rol = -1;
+    this.roles = [];
   }
 
   ngOnInit(): void {
@@ -24,15 +24,17 @@ export class RoleDirective implements OnInit {
   }
 
   @Input()
-  set appRole(val: number) {
-    this.rol = val;
+  set appRole(val: Array<number>) {
+    this.roles = val;
     this.updateView();
   }
 
   private updateView(): void {
     this.viewContainer.clear();
-    if(this.currentUserRol == this.rol){
-      this.viewContainer.createEmbeddedView(this.templateRef);
+    for(const rol of this.roles){
+      if(this.currentUserRol == rol){
+        this.viewContainer.createEmbeddedView(this.templateRef);
+      }
     }
   }
 

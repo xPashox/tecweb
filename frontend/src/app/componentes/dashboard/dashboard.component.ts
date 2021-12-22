@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
         this.seccionActiva = 2;
         break; 
       } 
-      case "class": { 
+      case "room": { 
         this.seccionActiva = 3;
         break; 
       } 
@@ -40,12 +40,24 @@ export class DashboardComponent implements OnInit {
         this.seccionActiva = 4;
         break; 
       }
-      case "career": { 
+      case "class": { 
         this.seccionActiva = 5;
         break;  
       } 
-      case "sede": { 
+      case "subscription": { 
         this.seccionActiva = 6;
+        break;
+      }
+      case "event": { 
+        this.seccionActiva = 7;
+        break; 
+      }
+      case "career": { 
+        this.seccionActiva = 8;
+        break;  
+      } 
+      case "sede": { 
+        this.seccionActiva = 9;
         break;
       } 
       default: { 
