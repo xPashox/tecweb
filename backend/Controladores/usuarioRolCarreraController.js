@@ -3,6 +3,7 @@ const ServicioDeshabilitarUsuarioRolCarrera = require("../Servicios/UsuarioRolCa
 const ServicioEditarUsuarioRolCarrera = require("../Servicios/UsuarioRolCarrera/servicioEditarUsuarioRolCarrera.js")
 const ServicioEliminarUsuarioRolCarrera = require("../Servicios/UsuarioRolCarrera/servicioEliminarUsuarioRolCarrera.js")
 const ServicioHabilitarUsuarioRolCarrera = require("../Servicios/UsuarioRolCarrera/servicioHabilitarUsuarioRolCarrera.js")
+const ServicioListarUsuarioRolCarrera = require("../Servicios/UsuarioRolCarrera/servicioListarUsuarioRolCarrera.js")
 /*
 		idUsuarioRol: {
       type: DataTypes.INTEGER,
@@ -159,4 +160,44 @@ exports.eliminarUsuarioRolCarrera = async (req, res) => {
 			errors: eliminarUsuarioRolCarreraResult.errors
 		})
 	}
+}
+
+exports.obtenerUsuarioRolCarrera = async (req, res) => {
+	if(req.body.id == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan datos."]
+		})
+	}
+	const urCarreraData = {
+		id: req.body.id
+	}
+	res.json(await ServicioListarUsuarioRolCarrera.obtenerUsuarioRolCarrera(urCarreraData))
+}
+
+exports.listarUsuarioRolCarrera = async (req, res) => {
+	res.json(await ServicioListarUsuarioRolCarrera.listarUsuarioRolCarrera())
+}
+
+exports.listarUsuarioRolCarreraPorCarrera = async (req, res) => {
+	if(req.body.idCarrera == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan datos."]
+		})
+	}
+	res.json(await ServicioListarUsuarioRolCarrera.listarUsuarioRolCarreraPorCarrera(req.body.idCarrera))
+}
+
+exports.listarUsuarioRolCarreraPorUsuarioRol = async (req, res) => {
+	if(req.body.idUsuarioRol == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan datos."]
+		})
+	}
+	res.json(await ServicioListarUsuarioRolCarrera.listarUsuarioRolCarreraPorUsuarioRol(req.body.idUsuarioRol))
 }

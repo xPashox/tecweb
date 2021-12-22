@@ -17,6 +17,12 @@ usuarioRolCarrera.put("/crear", rutasProtegidas, usuarioRolCarreraController.cre
 //Rutas con POST
 usuarioRolCarrera.post("/editar", rutasProtegidas, usuarioRolCarreraController.editarUsuarioRolCarrera)
 
+//Rutas con GET
+usuarioRolCarrera.get("/obtener", rutasProtegidas, usuarioRolCarreraController.obtenerUsuarioRolCarrera)
+usuarioRolCarrera.get("/listar", rutasProtegidas, usuarioRolCarreraController.listarUsuarioRolCarrera)
+usuarioRolCarrera.get("/listarporusuariorol", rutasProtegidas, usuarioRolCarreraController.listarUsuarioRolCarreraPorUsuarioRol)
+usuarioRolCarrera.get("/listarporcarrera", rutasProtegidas, usuarioRolCarreraController.listarUsuarioRolCarreraPorCarrera)
+
 //Rutas con PATCH
 usuarioRolCarrera.patch("/deshabilitar", rutasProtegidas, usuarioRolCarreraController.deshabilitarUsuarioRolCarrera)
 usuarioRolCarrera.patch("/habilitar", rutasProtegidas, usuarioRolCarreraController.habilitarUsuarioRolCarrera)

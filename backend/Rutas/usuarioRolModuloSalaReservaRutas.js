@@ -13,6 +13,13 @@ usuarioRolModuloSalaReserva.use(cors())
 //Rutas tipo PUT
 usuarioRolModuloSalaReserva.put("/crear", rutasProtegidas, usuarioRolModuloSalaReservaController.crearUsuarioRolModuloSalaReserva)
 
+//Rutas tipo GET
+
+usuarioRolModuloSalaReserva.get("/obtener", rutasProtegidas, usuarioRolModuloSalaReservaController.obtenerUsuarioRolModuloSalaReserva)
+usuarioRolModuloSalaReserva.get("/listar", rutasProtegidas, usuarioRolModuloSalaReservaController.listarUsuarioRolModuloSalaReserva)
+usuarioRolModuloSalaReserva.get("/listarporusuariorol", rutasProtegidas, usuarioRolModuloSalaReservaController.listarUsuarioRolModuloSalaReservaPorUsuarioRol)
+usuarioRolModuloSalaReserva.get("/listarpormodulosala", rutasProtegidas, usuarioRolModuloSalaReservaController.listarUsuarioRolModuloSalaReservaPorModuloSala)
+
 //Rutas tipo POST
 usuarioRolModuloSalaReserva.post("/editar", rutasProtegidas, usuarioRolModuloSalaReservaController.editarUsuarioRolModuloSalaReserva)
 

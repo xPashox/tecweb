@@ -13,6 +13,12 @@ usuarioRolModuloSubscripcion.use(cors())
 //Rutas tipo PUT
 usuarioRolModuloSubscripcion.put("/crear", rutasProtegidas, usuarioRolModuloSubscripcionController.crearUsuarioRolModuloSubscripcion)
 
+//Rutas tipo GET
+usuarioRolModuloSubscripcion.get("/obtener", rutasProtegidas, usuarioRolModuloSubscripcionController.obtenerUsuarioRolModuloSubscripcion)
+usuarioRolModuloSubscripcion.get("/listar", rutasProtegidas, usuarioRolModuloSubscripcionController.listarUsuarioRolModuloSubscripcion)
+usuarioRolModuloSubscripcion.get("/listarpormodulo", rutasProtegidas, usuarioRolModuloSubscripcionController.listarUsuarioRolModuloSubscripcionPorModulo)
+usuarioRolModuloSubscripcion.get("/listarporusuariorol", rutasProtegidas, usuarioRolModuloSubscripcionController.listarUsuarioRolModuloSubscripcionPorUsuarioRol)
+
 //Rutas tipo POST
 usuarioRolModuloSubscripcion.post("/editar", rutasProtegidas, usuarioRolModuloSubscripcionController.editarUsuarioRolModuloSubscripcion)
 

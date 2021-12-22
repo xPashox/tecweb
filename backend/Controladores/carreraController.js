@@ -3,6 +3,7 @@ const ServicioCrearCarrera = require("../Servicios/Carrera/servicioCrearCarrera"
 const ServicioDeshabilitarCarrera = require("../Servicios/Carrera/servicioDeshabilitarCarrera")
 const ServicioHabilitarCarrera = require("../Servicios/Carrera/servicioHabilitarCarrera")
 const ServicioEditarCarrera = require("../Servicios/Carrera/servicioEditarCarrera")
+const ServicioListarCarrera = require("../Servicios/Carrera/servicioListarCarrera")
 		/*id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -147,3 +148,34 @@ exports.deshabilitarCarrera = async (req, res) => {
 		})
 	}
 }
+
+exports.obtenerCarrera = async (req, res) => {
+	if(req.body.id == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros"]
+		})
+	}
+	var carreraData = {
+		id: req.body.id
+	}
+	res.json(await ServicioListarCarrera.obtenerCarrera(carreraData))
+}
+
+exports.listarCarreras = async (req, res) => {
+	res.json(await ServicioListarCarrera.listarCarreras())
+}
+
+exports.listarCarrerasPorCasaEstudio = async (req, res) => {
+	if(req.body.idCasaEstudio == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros"]
+		})
+	}
+	res.json(await ServicioListarCarrera.listarCarrerasPorCasaEstudio(idCasaEstudio))
+}
+
+

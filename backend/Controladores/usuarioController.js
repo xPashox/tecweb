@@ -5,7 +5,6 @@ var ServicioDeshabilitarUsuario = require("../Servicios/Usuario/servicioDeshabil
 var ServicioHabilitarUsuario = require("../Servicios/Usuario/servicioHabilitarUsuario")
 var ServicioEditarUsuario = require("../Servicios/Usuario/servicioEditarUsuario")
 var ServicioListarUsuario = require("../Servicios/Usuario/servicioListarUsuario")
-var ServicioListarUsuarios = require("../Servicios/Usuario/servicioListarUsuarios")
 var ServicioLogin = require("../Servicios/Usuario/servicioLogin")
 var ServicioRecuperarClave = require("../Servicios/Usuario/RecuperarClave/servicioRecuperarClave")
 
@@ -171,7 +170,7 @@ exports.listarUsuario = async (req, res) => {
 }
 
 exports.listarUsuarios = async (req, res) => {
-	var listarUsuariosResult = await ServicioListarUsuarios.listarUsuarios()
+	var listarUsuariosResult = await ServicioListarUsuario.listarUsuarios()
 	if(listarUsuariosResult.success){
 		res.json({
 			success: true,
@@ -255,4 +254,15 @@ exports.generarCambioClave = async (req, res) => {
 		token: req.body.token
 	}
 	res.json(await ServicioRecuperarClave.generarCambioClave(userData))
+}
+
+exports.listarUsuarioPorRol = async (req, res) => {
+	if(req.body.rol == undefined){
+		return res.json({
+			success: false,
+			trace: "",
+			errors: ["Faltan parametros."]
+		})
+	}
+	res.json(await ServicioListarUsuario.listarUsuarioPorRol())
 }
