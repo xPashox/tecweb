@@ -4,7 +4,6 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
 
 //Componentes
 import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
-import { CheckCierreSesionGuard } from './guards/check-cierre-sesion.guard';
 import { CheckInicioSesionGuard } from './guards/check-inicio-sesion.guard';
 
 const routes: Routes = [
@@ -15,8 +14,7 @@ const routes: Routes = [
   },
   {
     path:'inicio-sesion',
-    component: InicioSesionComponent,
-    canActivate: [CheckCierreSesionGuard]
+    component: InicioSesionComponent
   },
   {
     path: 'dashboard',

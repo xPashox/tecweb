@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { UsuarioI } from '../modelos/usuario.interface';
+import { UsuarioRolI } from '../modelos/usuario-rol.interface';
 import { RespuestaApiI } from '../modelos/respuesta-api.interface';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -41,7 +42,7 @@ export class ApiService {
   cerrarSesion(): void {
     localStorage.removeItem('token');
     this.usuarioLoggeado.next(false);
-    this.router.navigateByUrl('/inicio-sesion');
+    this.router.navigate(['/inicio-sesion']);
   }
 
   private guardarToken(token: string): void {
@@ -56,6 +57,12 @@ export class ApiService {
 
   leerToken(): string {
     return localStorage.getItem('token')!;
+  }
+
+  getCurrentUser(): UsuarioRolI {
+    const decodeToken = helper.decodeToken(this.leerToken());
+    const currentUser: UsuarioRolI = {id: decodeToken.userID, email: decodeToken.email, rol: decodeToken.rol};
+    return currentUser;
   }
 
 }

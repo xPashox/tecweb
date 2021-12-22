@@ -6,6 +6,7 @@ import { ApiService } from '../../servicios/api.service';
 import { Md5 } from 'ts-md5/dist/md5';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -23,12 +24,18 @@ export class InicioSesionComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.api.usuarioLoggeado.pipe(first()).subscribe((usuarioLoggeado) => {
+      if(usuarioLoggeado){
+        this.router.navigateByUrl('/dashboard');
+      }
+    });
+  }
 
   onSubmit(usuario: UsuarioI){
     const md5 = new Md5();
-    usuario.clave = (md5.appendStr(usuario.clave).end()).toString();
-    this.api.iniciarSesion(usuario).subscribe( 
+    const infoUsuario: UsuarioI = {email: usuario.email, clave: (md5.appendStr(usuario.clave).end()).toString()};
+    this.api.iniciarSesion(infoUsuario).subscribe(
       (respuesta) => {
         if(respuesta && respuesta.success){
           this.router.navigateByUrl('/dashboard');

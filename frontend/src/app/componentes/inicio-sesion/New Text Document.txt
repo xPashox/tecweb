@@ -1,0 +1,29 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <h4 class="card-header">Inicio de sesión</h4>
+                    <div class="card-body">
+                        <form [formGroup]="inicioSesionForm" (ngSubmit)="onSubmit(inicioSesionForm.value)">
+                            <div class="input-group input-group-outline my-3" [ngClass]="{'is-invalid': email?.invalid 
+                            && (email?.dirty || email?.touched), 'is-valid': email?.valid && (email?.dirty || email?.touched)}">
+                                <label class="form-label">Correo electrónico</label>
+                                <input type="email" formControlName="email" class="form-control" required>
+                            </div>
+                            <div class="input-group input-group-outline my-3" [ngClass]="{'is-invalid': clave?.invalid
+                            && (clave?.dirty || clave?.touched), 'is-valid': clave?.valid && (clave?.dirty || clave?.touched)}">
+                                <label class="form-label">Contraseña</label>
+                                <input type="password" formControlName="clave" class="form-control" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="btn bg-gradient-primary" [disabled]="inicioSesionForm.invalid">Ingresar</button>
+                                <a class="btn btn-link">Registrarse</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

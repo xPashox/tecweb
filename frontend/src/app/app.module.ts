@@ -9,12 +9,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { RoleDirective } from './directivas/role.directive';
+import { AdminUserComponent } from './componentes/admin-user/admin-user.component';
+import { AdminDashboardComponent } from './componentes/admin-dashboard/admin-dashboard.component';
+import { AdminClassComponent } from './componentes/admin-class/admin-class.component';
+import { AdminModuleComponent } from './componentes/admin-module/admin-module.component';
+import { AdminCareerComponent } from './componentes/admin-career/admin-career.component';
+import { AdminSedeComponent } from './componentes/admin-sede/admin-sede.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     componentesEnrutamiento,
-    DashboardComponent
+    DashboardComponent,
+    RoleDirective,
+    AdminUserComponent,
+    AdminDashboardComponent,
+    AdminClassComponent,
+    AdminModuleComponent,
+    AdminCareerComponent,
+    AdminSedeComponent
   ],
   imports: [
     BrowserModule,
