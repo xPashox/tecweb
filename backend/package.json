@@ -12,6 +12,7 @@
     "nodemon": "^2.0.14"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.6.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -20,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
     "mysql2": "^2.3.2",
+    "randomstring": "^1.2.1",
     "sequelize": "^6.7.0",
     "sequelize-cli": "^6.2.0",
     "sequelize-mig": "^3.1.3",
