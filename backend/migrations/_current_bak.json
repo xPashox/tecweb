@@ -1,0 +1,572 @@
+{
+    "tables": {
+        "Carrera": {
+            "tableName": "Carrera",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idCasaEstudio": {
+                    "references": {
+                        "model": "CasaEstudio",
+                        "key": "id"
+                    },
+                    "field": "idCasaEstudio",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nombre": {
+                    "field": "nombre",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "emailContacto": {
+                    "field": "emailContacto",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "telefono": {
+                    "field": "telefono",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "CasaEstudio": {
+            "tableName": "CasaEstudio",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nombre": {
+                    "field": "nombre",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "direccion": {
+                    "field": "direccion",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Modulo": {
+            "tableName": "Modulo",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idCasaEstudio": {
+                    "references": {
+                        "model": "CasaEstudio",
+                        "key": "id"
+                    },
+                    "field": "idCasaEstudio",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idCarrera": {
+                    "references": {
+                        "model": "Carrera",
+                        "key": "id"
+                    },
+                    "field": "idCarrera",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nombre": {
+                    "field": "nombre",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "ModuloSala": {
+            "tableName": "ModuloSala",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idModulo": {
+                    "references": {
+                        "model": "Modulo",
+                        "key": "id"
+                    },
+                    "field": "idModulo",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idSala": {
+                    "references": {
+                        "model": "Sala",
+                        "key": "id"
+                    },
+                    "field": "idSala",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idUsuarioRolModulo": {
+                    "references": {
+                        "model": "UsuarioRol",
+                        "key": "id"
+                    },
+                    "field": "idUsuarioRolModulo",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nombre": {
+                    "field": "nombre",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "descripcion": {
+                    "field": "descripcion",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "cantidadAlumnos": {
+                    "field": "cantidadAlumnos",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "codigo": {
+                    "unique": true,
+                    "field": "codigo",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "fechaInicio": {
+                    "field": "fechaInicio",
+                    "seqType": "Sequelize.DATE"
+                },
+                "fechaTermino": {
+                    "field": "fechaTermino",
+                    "seqType": "Sequelize.DATE"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Rol": {
+            "tableName": "Rol",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nombre": {
+                    "field": "nombre",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "descripcion": {
+                    "field": "descripcion",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Sala": {
+            "tableName": "Sala",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idCasaEstudio": {
+                    "references": {
+                        "model": "CasaEstudio",
+                        "key": "id"
+                    },
+                    "field": "idCasaEstudio",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nombre": {
+                    "field": "nombre",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "aforo": {
+                    "field": "aforo",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Usuario": {
+            "tableName": "Usuario",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "email": {
+                    "unique": true,
+                    "field": "email",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "nombres": {
+                    "field": "nombres",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "apellidos": {
+                    "field": "apellidos",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "clave": {
+                    "field": "clave",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "UsuarioRol": {
+            "tableName": "UsuarioRol",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idUsuario": {
+                    "references": {
+                        "model": "Usuario",
+                        "key": "id"
+                    },
+                    "field": "idUsuario",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idRol": {
+                    "references": {
+                        "model": "Rol",
+                        "key": "id"
+                    },
+                    "field": "idRol",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "UsuarioRolCarrera": {
+            "tableName": "UsuarioRolCarrera",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idUsuarioRol": {
+                    "references": {
+                        "model": "UsuarioRol",
+                        "key": "id"
+                    },
+                    "field": "idUsuarioRol",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idCarrera": {
+                    "references": {
+                        "model": "Carrera",
+                        "key": "id"
+                    },
+                    "field": "idCarrera",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "UsuarioRolModulo": {
+            "tableName": "UsuarioRolModulo",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idUsuarioRol": {
+                    "references": {
+                        "model": "UsuarioRol",
+                        "key": "id"
+                    },
+                    "field": "idUsuarioRol",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idModulo": {
+                    "references": {
+                        "model": "Modulo",
+                        "key": "id"
+                    },
+                    "field": "idModulo",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "UsuarioRolModuloSalaReserva": {
+            "tableName": "UsuarioRolModuloSalaReserva",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idUsuarioRol": {
+                    "references": {
+                        "model": "UsuarioRol",
+                        "key": "id"
+                    },
+                    "field": "idUsuarioRol",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idModuloSala": {
+                    "references": {
+                        "model": "ModuloSala",
+                        "key": "id"
+                    },
+                    "field": "idModuloSala",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "fecha": {
+                    "field": "fecha",
+                    "seqType": "Sequelize.DATE"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "UsuarioRolModuloSubscripcion": {
+            "tableName": "UsuarioRolModuloSubscripcion",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idUsuarioRol": {
+                    "references": {
+                        "model": "UsuarioRol",
+                        "key": "id"
+                    },
+                    "field": "idUsuarioRol",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idModulo": {
+                    "references": {
+                        "model": "Modulo",
+                        "key": "id"
+                    },
+                    "field": "idModulo",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "UsuarioSesion": {
+            "tableName": "UsuarioSesion",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "idUsuario": {
+                    "references": {
+                        "model": "Usuario",
+                        "key": "id"
+                    },
+                    "field": "idUsuario",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "token": {
+                    "field": "token",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "estado": {
+                    "field": "estado",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "path": "C:\\Users\\Maximo Hernandez\\Documents\\Repositorios\\tecweb\\backend\\migrations\\_current.json",
+    "backupPath": "C:\\Users\\Maximo Hernandez\\Documents\\Repositorios\\tecweb\\backend\\migrations\\_current_bak.json",
+    "exists": true,
+    "revision": 4
+}

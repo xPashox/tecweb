@@ -1,7 +1,9 @@
 /* Variables Ambiente */
 require('dotenv').config()
 module.exports = {
-	JWTSecret: process.env.JWT_SECRET
+	JWTSecret: process.env.JWT_SECRET,
+	SendgridKey: process.env.SENDGRID_KEY,
+	SendgridEmail: process.env.SENDGRID_EMAIL
 }
 //Archivo servidor
 const express = require('express');
@@ -24,8 +26,26 @@ app.listen(4000, () => {
 })
 
 var Usuarios = require("./Rutas/usuarioRutas")
+var Carreras = require("./Rutas/carreraRutas")
+var Modulos = require("./Rutas/moduloRutas")
+var UsuariosRolCarreras = require("./Rutas/usuarioRolCarreraRutas")
+var Salas = require("./Rutas/salaRutas")
+var CasaEstudios = require("./Rutas/casaestudioRutas")
+var ModuloSalas = require("./Rutas/moduloSalaRutas")
+var UsuariosRolModulos = require("./Rutas/usuarioRolModuloRutas")
+var UsuarioRolModuloSalaReservas = require("./Rutas/usuarioRolModuloSalaReservaRutas")
+var UsuarioRolModuloSubscripcion = require("./Rutas/usuarioRolModuloSubscripcionRutas")
 
 app.use("/usuario", Usuarios)
+app.use("/carrera", Carreras)
+app.use("/modulo", Modulos)
+app.use("/usuarioRolCarrera", UsuariosRolCarreras)
+app.use("/sala", Salas)
+app.use("/casaestudio", CasaEstudios)
+app.use("/modulosala", ModuloSalas)
+app.use("/usuariorolmodulo", UsuariosRolModulos)
+app.use("/usuariorolmodulosalareserva", UsuarioRolModuloSalaReservas)
+app.use("/usuariorolmodulosubscripcion", UsuarioRolModuloSubscripcion)
 
 //Codigo para documentacion Swagger
 var swaggerUi = require('swagger-ui-express'),

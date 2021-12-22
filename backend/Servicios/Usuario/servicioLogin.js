@@ -1,8 +1,8 @@
-const Usuario = require("../models").Usuario
-const UsuarioRol = require ("../models").UsuarioRol
+const Usuario = require("../../models/").Usuario
+const UsuarioRol = require("../../models/").UsuarioRol
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
-const _config = require("..")
+const _config = require("../../")
 
 let fetcheduser
 
@@ -13,10 +13,16 @@ var iniciarSesion = async function (usuarioData){
         }
     }).then(user => {
         if (!user){
-            return {
+            return Promise.reject({
                 success: false,
                 trace: "No se encontro al usuario."
-            }
+            })
+        }
+        if(user.estado == 0){
+            return Promise.reject({
+                success: false,
+                trace: "El usuario se encuentra deshabilitado."
+            })
         }
         fetcheduser = user
         return bcrypt.compare(usuarioData.clave, user.clave)
@@ -34,10 +40,10 @@ var iniciarSesion = async function (usuarioData){
         })
     }).then(result => {
         if (!result){
-            return {
+            return Promise.reject({
                 success: false,
                 trace: "Usuario no autorizado."
-            }
+            })
         }
         /* Crear Token */
         const token = jwt.sign(
