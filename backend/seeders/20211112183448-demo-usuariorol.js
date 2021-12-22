@@ -8,6 +8,27 @@ module.exports = {
       estado: 1,
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      idUsuario: 2,
+      idRol: 2,
+      estado: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      idUsuario: 3,
+      idRol: 3,
+      estado: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      idUsuario: 4,
+      idRol: 4,
+      estado: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }]);
   },
 
